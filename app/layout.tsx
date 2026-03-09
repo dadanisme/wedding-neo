@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Figtree } from "next/font/google"
+import { Geist_Mono, Figtree } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -19,7 +19,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className={cn(
         "antialiased",
         fontMono.variable,

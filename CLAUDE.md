@@ -21,7 +21,7 @@ Wedding invitation website for **Sarah & Ramdan**. Built with Next.js 16 (App Ro
 - **Styling** — Tailwind CSS v4 with CSS variables for theming (defined in `app/globals.css`). Uses `cn()` utility from `@/lib/utils` for class merging.
 - **Variants** — `class-variance-authority` (cva) for component variants. Prettier sorts Tailwind classes via `prettier-plugin-tailwindcss` (configured for `cn` and `cva` functions).
 - **Icons** — HugeIcons (`@hugeicons/react` + `@hugeicons/core-free-icons`)
-- **Theme** — `next-themes` with dark mode via class strategy. Press `d` to toggle in dev.
+- **Theme** — Light mode only. No dark mode support.
 
 ## Path Aliases
 
