@@ -65,7 +65,7 @@ export default function Page() {
     <div className="flex min-h-svh items-center justify-center p-4 sm:p-8">
       <div className="flex w-full max-w-4xl flex-col gap-4">
         {/* Greeting Alert */}
-        <Dialog>
+        <Dialog defaultOpen>
           <DialogTrigger
             nativeButton={false}
             className="cursor-pointer text-left transition-all hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98]"
