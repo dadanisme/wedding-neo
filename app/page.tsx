@@ -84,7 +84,7 @@ function PageContent() {
               <HugeiconsIcon icon={ArrowRight01Icon} size={18} />
             </AlertTitle>
           </DialogTrigger>
-          <DialogContent>
+          <DialogContent className="max-h-[85vh] overflow-y-auto">
             <GreetingDialogContent guest={guest} />
           </DialogContent>
         </Dialog>
@@ -114,6 +114,7 @@ function PageContent() {
           {/* Date & Venue Card */}
           <BentoCard
             className="col-span-2 overflow-hidden bg-secondary text-secondary-foreground sm:col-span-2"
+            dialogClassName="max-h-[85vh] overflow-y-auto"
             dialogContent={<VenueDialogContent />}
           >
             <CardContent className="flex items-center gap-4 p-4">
