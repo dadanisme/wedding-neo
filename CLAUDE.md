@@ -34,6 +34,10 @@ Wedding invitation website for **Sarah & Ramdan**. Built with Next.js 16 (App Ro
 - Fonts: Figtree (sans, `--font-sans`), Geist Mono (mono, `--font-mono`)
 - **Always run `bun run format` and `bun run lint` after completing work**
 
+## Workflow Rules
+
+- **ALWAYS clarify before acting** — When an instruction is ambiguous (e.g., "put X here", "fill this section"), use AskUserQuestion tool to ask exactly where, what, and how before writing any code. Never assume. Ask many questions. It's better to over-clarify than to make the wrong change.
+
 ## Design Rules
 
 - **Neo-brutalism style** — use shadcn components whenever possible to maintain consistency
