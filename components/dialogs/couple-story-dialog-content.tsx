@@ -12,9 +12,11 @@ import {
 } from "@/components/ui/dialog"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { FavouriteIcon } from "@hugeicons/core-free-icons"
+import { useTranslation } from "@/lib/i18n-context"
 
 export function CoupleStoryDialogContent() {
   const [lightboxIndex, setLightboxIndex] = useState(-1)
+  const { t } = useTranslation()
 
   return (
     <>
@@ -38,31 +40,28 @@ export function CoupleStoryDialogContent() {
           </div>
           <DialogHeader className="items-center gap-1.5">
             <DialogTitle className="text-center text-2xl font-bold tracking-tight">
-              The Happy Couple
+              {t.couple.title}
             </DialogTitle>
             <DialogDescription className="text-center text-sm">
-              Two hearts, one journey.
+              {t.couple.subtitle}
             </DialogDescription>
           </DialogHeader>
         </div>
       </div>
 
-      {/* Divider */}
-      <div className="border-t-2 border-border" />
-
       {/* Groom section */}
       <div className="flex flex-col items-center gap-2 text-center">
         <p className="text-xs font-bold tracking-wider text-primary uppercase">
-          The Groom
+          {t.couple.theGroom}
         </p>
         <h3 className="text-xl font-bold text-foreground">
           {WEDDING.couple.groom.name}
         </h3>
         <p className="text-xs text-muted-foreground">
-          Son of {WEDDING.couple.groom.parents}
+          {t.couple.sonOf} {WEDDING.couple.groom.parents}
         </p>
         <p className="mt-1 text-sm text-muted-foreground italic">
-          &ldquo;{WEDDING.couple.groom.quote}&rdquo;
+          &ldquo;{t.couple.groomQuote}&rdquo;
         </p>
       </div>
 
@@ -72,16 +71,16 @@ export function CoupleStoryDialogContent() {
       {/* Bride section */}
       <div className="flex flex-col items-center gap-2 text-center">
         <p className="text-xs font-bold tracking-wider text-primary uppercase">
-          The Bride
+          {t.couple.theBride}
         </p>
         <h3 className="text-xl font-bold text-foreground">
           {WEDDING.couple.bride.name}
         </h3>
         <p className="text-xs text-muted-foreground">
-          Daughter of {WEDDING.couple.bride.parents}
+          {t.couple.daughterOf} {WEDDING.couple.bride.parents}
         </p>
         <p className="mt-1 text-sm text-muted-foreground italic">
-          &ldquo;{WEDDING.couple.bride.quote}&rdquo;
+          &ldquo;{t.couple.brideQuote}&rdquo;
         </p>
       </div>
 
@@ -91,7 +90,7 @@ export function CoupleStoryDialogContent() {
       {/* Gallery section */}
       <div className="flex flex-col gap-3">
         <p className="text-center text-xs font-bold tracking-wider text-primary uppercase">
-          Our Gallery
+          {t.couple.ourGallery}
         </p>
         <div className="grid grid-cols-3 gap-2">
           {WEDDING.gallery.map((src, i) => (

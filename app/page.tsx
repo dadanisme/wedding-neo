@@ -3,6 +3,7 @@
 import { Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { WEDDING } from "@/lib/constants"
+import { useTranslation } from "@/lib/i18n-context"
 import { Alert, AlertTitle } from "@/components/ui/alert"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
@@ -17,6 +18,7 @@ import { GreetingDialogContent } from "@/components/dialogs/greeting-dialog-cont
 import { CoupleStoryDialogContent } from "@/components/dialogs/couple-story-dialog-content"
 import { VenueDialogContent } from "@/components/dialogs/venue-dialog-content"
 import { GarutDialogContent } from "@/components/dialogs/garut-dialog-content"
+import { LanguageToggle } from "@/components/language-toggle"
 
 function BentoCard({
   className,
@@ -53,11 +55,12 @@ function BentoCard({
 function PageContent() {
   const searchParams = useSearchParams()
   const guest = searchParams.get("to") ?? "Guest"
-  const greetingText = WEDDING.greeting.replace("{guest}", guest)
+  const { t, dateLocale } = useTranslation()
+  const greetingText = t.greeting.salutation.replace("{guest}", guest)
 
   const date = new Date(WEDDING.date)
 
-  const formattedDate = date.toLocaleDateString("en-US", {
+  const formattedDate = date.toLocaleDateString(dateLocale, {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -95,7 +98,7 @@ function PageContent() {
           >
             <CardHeader>
               <CardTitle className="text-xs font-normal tracking-widest uppercase opacity-80">
-                We&apos;re getting married
+                {t.page.gettingMarried}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -104,9 +107,7 @@ function PageContent() {
                 <br />
                 &amp; {WEDDING.couple.groom.shortName}
               </h2>
-              <p className="mt-2 text-sm opacity-70">
-                Two hearts, one journey.
-              </p>
+              <p className="mt-2 text-sm opacity-70">{t.page.twoHearts}</p>
             </CardContent>
           </BentoCard>
 
@@ -123,7 +124,7 @@ function PageContent() {
               />
               <div className="flex flex-col gap-0.5">
                 <p className="text-xs font-bold tracking-wider uppercase opacity-60">
-                  Save the Date
+                  {t.page.saveTheDate}
                 </p>
                 <p className="text-base leading-tight font-bold text-foreground sm:text-lg">
                   {formattedDate}
@@ -158,16 +159,20 @@ function PageContent() {
           >
             <CardHeader>
               <CardTitle className="text-xs font-normal tracking-widest uppercase opacity-80">
-                Where to Go in Garut
+                {t.page.garutTitle}
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-1 items-end">
               <p className="text-lg font-medium sm:text-xl">
-                Explore hot springs, tea plantations, and local cuisine while
-                you&apos;re here.
+                {t.page.garutDescription}
               </p>
             </CardContent>
           </BentoCard>
+        </div>
+
+        {/* Language Toggle */}
+        <div className="flex justify-center">
+          <LanguageToggle />
         </div>
       </div>
     </div>

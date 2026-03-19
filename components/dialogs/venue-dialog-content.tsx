@@ -1,3 +1,5 @@
+"use client"
+
 import { WEDDING } from "@/lib/constants"
 import {
   DialogDescription,
@@ -26,11 +28,13 @@ import {
   Restaurant01Icon,
   Shirt01Icon,
 } from "@hugeicons/core-free-icons"
+import { useTranslation } from "@/lib/i18n-context"
 
 export function VenueDialogContent() {
+  const { t, dateLocale } = useTranslation()
   const date = new Date(WEDDING.date)
 
-  const formattedDate = date.toLocaleDateString("en-US", {
+  const formattedDate = date.toLocaleDateString(dateLocale, {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -44,7 +48,7 @@ export function VenueDialogContent() {
       action: "TEMPLATE",
       text: `${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName}'s Wedding`,
       dates: `${start}/${end}`,
-      details: `Akad: ${WEDDING.schedule.akad} WIB\nResepsi: ${WEDDING.schedule.resepsi} WIB`,
+      details: `${t.venue.akad}: ${WEDDING.schedule.akad} WIB\n${t.venue.resepsi}: ${WEDDING.schedule.resepsi} WIB`,
       location: `${WEDDING.venue}, ${WEDDING.address}`,
     })
     return `https://calendar.google.com/calendar/render?${params.toString()}`
@@ -62,7 +66,7 @@ export function VenueDialogContent() {
       `DTEND:${end}`,
       `SUMMARY:${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName}'s Wedding`,
       `LOCATION:${WEDDING.venue}, ${WEDDING.address}`,
-      `DESCRIPTION:Akad: ${WEDDING.schedule.akad} WIB\\nResepsi: ${WEDDING.schedule.resepsi} WIB`,
+      `DESCRIPTION:${t.venue.akad}: ${WEDDING.schedule.akad} WIB\\n${t.venue.resepsi}: ${WEDDING.schedule.resepsi} WIB`,
       "END:VEVENT",
       "END:VCALENDAR",
     ].join("\r\n")
@@ -120,10 +124,10 @@ export function VenueDialogContent() {
       <div className="flex items-center gap-4">
         <div className="flex size-12 shrink-0 flex-col items-center justify-center border-2 border-border bg-secondary shadow-sm">
           <span className="text-[10px] leading-none font-bold text-muted-foreground uppercase">
-            {date.toLocaleDateString("en-US", { month: "short" })}
+            {date.toLocaleDateString(dateLocale, { month: "short" })}
           </span>
           <span className="text-lg leading-tight font-bold text-foreground">
-            {date.toLocaleDateString("en-US", { day: "numeric" })}
+            {date.toLocaleDateString(dateLocale, { day: "numeric" })}
           </span>
         </div>
         <div className="flex-1">
@@ -139,7 +143,7 @@ export function VenueDialogContent() {
               />
             }
           >
-            + Calendar
+            {t.venue.addCalendar}
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
@@ -152,11 +156,11 @@ export function VenueDialogContent() {
               }
             >
               <HugeiconsIcon icon={GoogleIcon} size={16} />
-              Google Calendar
+              {t.venue.googleCalendar}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={downloadIcs}>
               <HugeiconsIcon icon={Download04Icon} size={16} />
-              Download .ics
+              {t.venue.downloadIcs}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -172,11 +176,11 @@ export function VenueDialogContent() {
               className="shrink-0 text-primary"
             />
             <span className="text-xs font-bold tracking-wider text-foreground uppercase">
-              Schedule
+              {t.venue.schedule}
             </span>
           </div>
           <span className="text-xs text-muted-foreground">
-            Akad {WEDDING.schedule.akad} &middot; Resepsi{" "}
+            {t.venue.akad} {WEDDING.schedule.akad} &middot; {t.venue.resepsi}{" "}
             {WEDDING.schedule.resepsi}
           </span>
         </div>
@@ -188,7 +192,7 @@ export function VenueDialogContent() {
               className="shrink-0 text-primary"
             />
             <span className="text-xs font-bold tracking-wider text-foreground uppercase">
-              Dress Code
+              {t.venue.dressCode}
             </span>
           </div>
           <span className="text-xs text-muted-foreground">
@@ -203,7 +207,7 @@ export function VenueDialogContent() {
               className="shrink-0 text-primary"
             />
             <span className="text-xs font-bold tracking-wider text-foreground uppercase">
-              Food
+              {t.venue.food}
             </span>
           </div>
           <span className="text-xs text-muted-foreground">{WEDDING.food}</span>
@@ -216,11 +220,11 @@ export function VenueDialogContent() {
               className="shrink-0 text-primary"
             />
             <span className="text-xs font-bold tracking-wider text-foreground uppercase">
-              Parking
+              {t.venue.parking}
             </span>
           </div>
           <span className="text-xs text-muted-foreground">
-            {WEDDING.parking}
+            {t.venue.parkingInfo}
           </span>
         </div>
         <div className="flex items-center justify-between gap-3 py-3">
@@ -231,7 +235,7 @@ export function VenueDialogContent() {
               className="shrink-0 text-primary"
             />
             <span className="text-xs font-bold tracking-wider text-foreground uppercase">
-              Contact
+              {t.venue.contact}
             </span>
           </div>
           <span className="text-right text-xs text-muted-foreground">
@@ -246,7 +250,7 @@ export function VenueDialogContent() {
               className="shrink-0 text-primary"
             />
             <span className="text-xs font-bold tracking-wider text-foreground uppercase">
-              Gift
+              {t.venue.gift}
             </span>
           </div>
           <span className="text-right text-xs text-muted-foreground">
@@ -257,7 +261,7 @@ export function VenueDialogContent() {
 
       {/* Gift message */}
       <p className="text-center text-xs text-muted-foreground italic">
-        &ldquo;{WEDDING.gift.message}&rdquo;
+        &ldquo;{t.venue.giftMessage}&rdquo;
       </p>
 
       {/* CTA */}
@@ -275,7 +279,7 @@ export function VenueDialogContent() {
           }
         >
           <HugeiconsIcon icon={Navigation03Icon} size={18} />
-          Get Directions
+          {t.venue.getDirections}
         </Button>
       </DialogFooter>
     </>

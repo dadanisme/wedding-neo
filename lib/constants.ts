@@ -1,19 +1,14 @@
 export const WEDDING = {
-  greeting: "Dear {guest}, you are cordially invited!",
   couple: {
     bride: {
       name: "Sarah Amelia Nur Wahidah",
       shortName: "Sarah",
       parents: "Mr. Ujang Rahmat & Mrs. Dedeh Setiasih",
-      quote:
-        "With a gentle heart and strong faith, she believes love grows in patience and blossoms in sincerity.",
     },
     groom: {
       name: "Muhamad Ramdan",
       shortName: "Ramdan",
       parents: "Mr. Samsudin & Mrs. Maesaroh",
-      quote:
-        "With calm strength and steady devotion, he believes love is choosing the same person every single day.",
     },
   },
   gallery: [
@@ -42,7 +37,6 @@ export const WEDDING = {
   address: "Kersamanah, Garut",
   mapUrl: "https://maps.app.goo.gl/VPTKQVqquAdkayqA6",
   dressCode: "Earth Tones",
-  parking: "50+ spots available",
   schedule: {
     akad: "09:00",
     resepsi: "11:00",
@@ -50,7 +44,6 @@ export const WEDDING = {
   food: "Sundanese Oriental",
   contacts: [{ name: "Sarah", phone: "081573690927" }],
   gift: {
-    message: "Your presence is our greatest gift",
     bank: "BNI",
     account: "0842755839",
     holder: "Sarah Amelia Nur W.A.",

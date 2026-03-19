@@ -18,15 +18,16 @@ import {
   Navigation03Icon,
   Restaurant01Icon,
 } from "@hugeicons/core-free-icons"
+import { useTranslation } from "@/lib/i18n-context"
 
-const CATEGORIES = [
-  { key: "all", label: "All", icon: MapsLocation01Icon },
-  { key: "nature", label: "Nature", icon: Leaf01Icon },
-  { key: "food", label: "Food", icon: Restaurant01Icon },
-  { key: "culture", label: "Culture", icon: Mosque02Icon },
+const CATEGORY_ICONS = [
+  { key: "all", icon: MapsLocation01Icon },
+  { key: "nature", icon: Leaf01Icon },
+  { key: "food", icon: Restaurant01Icon },
+  { key: "culture", icon: Mosque02Icon },
 ] as const
 
-type Category = (typeof CATEGORIES)[number]["key"]
+type Category = (typeof CATEGORY_ICONS)[number]["key"]
 
 const CATEGORY_COLORS: Record<GarutPlace["category"], string> = {
   nature: "bg-accent text-accent-foreground",
@@ -36,6 +37,7 @@ const CATEGORY_COLORS: Record<GarutPlace["category"], string> = {
 
 export function GarutDialogContent() {
   const [activeCategory, setActiveCategory] = useState<Category>("all")
+  const { t } = useTranslation()
 
   const filtered =
     activeCategory === "all"
@@ -65,11 +67,10 @@ export function GarutDialogContent() {
           </div>
           <DialogHeader className="items-center gap-1.5">
             <DialogTitle className="text-center text-2xl font-bold tracking-tight">
-              Where to Go in Garut
+              {t.garut.title}
             </DialogTitle>
             <DialogDescription className="max-w-md text-center">
-              Explore Garut&apos;s famous hot springs, tea plantations, and
-              local cuisine while you&apos;re here for the celebration.
+              {t.garut.description}
             </DialogDescription>
           </DialogHeader>
         </div>
@@ -77,7 +78,7 @@ export function GarutDialogContent() {
 
       {/* Category filters */}
       <div className="flex flex-wrap gap-2">
-        {CATEGORIES.map((cat) => (
+        {CATEGORY_ICONS.map((cat) => (
           <Button
             key={cat.key}
             size="sm"
@@ -89,27 +90,46 @@ export function GarutDialogContent() {
             onClick={() => setActiveCategory(cat.key)}
           >
             <HugeiconsIcon icon={cat.icon} size={14} />
-            {cat.label}
+            {t.garut.categories[cat.key]}
           </Button>
         ))}
       </div>
 
       {/* Places grid */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {filtered.map((place) => (
-          <PlaceCard key={place.name} place={place} />
-        ))}
+        {filtered.map((place) => {
+          const index = GARUT_PLACES.indexOf(place)
+          const translatedPlace = t.garut.places[index]
+          return (
+            <PlaceCard
+              key={place.name}
+              place={place}
+              name={translatedPlace?.name ?? place.name}
+              description={translatedPlace?.description ?? place.description}
+            />
+          )
+        })}
       </div>
 
       {/* Footer tip */}
       <p className="text-center text-xs text-muted-foreground italic">
-        &ldquo;Garut — the Swiss Van Java&rdquo;
+        &ldquo;{t.garut.footerQuote}&rdquo;
       </p>
     </>
   )
 }
 
-function PlaceCard({ place }: { place: GarutPlace }) {
+function PlaceCard({
+  place,
+  name,
+  description,
+}: {
+  place: GarutPlace
+  name: string
+  description: string
+}) {
+  const { t } = useTranslation()
+
   return (
     <div className="group flex flex-col overflow-hidden border-2 border-border bg-background shadow-sm transition-shadow hover:shadow-md">
       {/* Image placeholder */}
@@ -129,17 +149,17 @@ function PlaceCard({ place }: { place: GarutPlace }) {
           }}
         />
         <span className="relative border-2 border-current bg-background/90 px-2 py-0.5 text-[10px] font-bold tracking-widest text-foreground uppercase">
-          {place.category}
+          {t.garut.categories[place.category]}
         </span>
       </div>
 
       {/* Content */}
       <div className="flex flex-1 flex-col gap-2 p-3">
         <h3 className="text-sm leading-tight font-bold text-foreground">
-          {place.name}
+          {name}
         </h3>
         <p className="flex-1 text-xs leading-relaxed text-muted-foreground">
-          {place.description}
+          {description}
         </p>
         <a
           href={place.mapUrl}
@@ -148,7 +168,7 @@ function PlaceCard({ place }: { place: GarutPlace }) {
           className="inline-flex items-center gap-1 text-xs font-bold text-primary transition-colors hover:text-foreground"
         >
           <HugeiconsIcon icon={Navigation03Icon} size={12} />
-          Directions
+          {t.garut.directions}
           <HugeiconsIcon
             icon={ArrowRight01Icon}
             size={12}

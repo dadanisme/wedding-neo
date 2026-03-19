@@ -1,3 +1,5 @@
+"use client"
+
 import {
   DialogClose,
   DialogDescription,
@@ -6,28 +8,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-
-const narrativeLines = [
-  "Some journeys begin quietly.",
-  "Ours started with a simple meeting,",
-  "a conversation,",
-  "and a sense of comfort we never expected.",
-  "",
-  "Over time, comfort became trust.",
-  "Trust became love.",
-  "And love brought us here —",
-  "ready to promise forever.",
-]
-
-const closingLines = [
-  "With grateful hearts and the blessings of our families,",
-  "we are honored to invite you",
-  "to witness the beginning of our new chapter.",
-  "",
-  "Your presence would truly mean so much to us.",
-]
+import { useTranslation } from "@/lib/i18n-context"
 
 export function GreetingDialogContent({ guest }: { guest: string }) {
+  const { t } = useTranslation()
+
   return (
     <>
       {/* Decorative header */}
@@ -43,11 +28,11 @@ export function GreetingDialogContent({ guest }: { guest: string }) {
         />
         <div className="relative flex flex-col items-center gap-3">
           <p className="text-[10px] font-bold tracking-[0.25em] text-muted-foreground uppercase">
-            A Gentle Invitation
+            {t.greeting.headerLabel}
           </p>
           <DialogHeader className="items-center gap-2">
             <DialogTitle className="text-center text-2xl font-bold tracking-tight">
-              Dear {guest}
+              {t.greeting.dialogTitle.replace("{guest}", guest)}
             </DialogTitle>
             <DialogDescription className="sr-only">
               Wedding invitation greeting
@@ -62,17 +47,16 @@ export function GreetingDialogContent({ guest }: { guest: string }) {
           &ldquo;
         </div>
         <blockquote className="pt-3 text-center text-sm leading-relaxed text-foreground italic">
-          And of His signs is that He created for you from yourselves mates that
-          you may find tranquillity in them.
+          {t.greeting.quranicVerse}
         </blockquote>
         <p className="mt-2 text-center font-mono text-[10px] tracking-wider text-muted-foreground uppercase">
-          QS. Ar-Rum: 21
+          {t.greeting.quranicRef}
         </p>
       </div>
 
       {/* Narrative — poetic line breaks */}
       <div className="flex flex-col gap-0.5 text-center">
-        {narrativeLines.map((line, i) =>
+        {t.greeting.narrativeLines.map((line, i) =>
           line === "" ? (
             <div key={i} className="h-3" />
           ) : (
@@ -95,14 +79,14 @@ export function GreetingDialogContent({ guest }: { guest: string }) {
 
       {/* Closing invitation */}
       <div className="flex flex-col gap-0.5 text-center">
-        {closingLines.map((line, i) =>
+        {t.greeting.closingLines.map((line, i) =>
           line === "" ? (
             <div key={i} className="h-3" />
           ) : (
             <p
               key={i}
               className={
-                i === closingLines.length - 1
+                i === t.greeting.closingLines.length - 1
                   ? "text-sm leading-relaxed font-medium text-foreground"
                   : "text-sm leading-relaxed text-muted-foreground"
               }
@@ -123,7 +107,7 @@ export function GreetingDialogContent({ guest }: { guest: string }) {
             />
           }
         >
-          Take Me In
+          {t.greeting.cta}
         </DialogClose>
       </DialogFooter>
     </>

@@ -6,14 +6,15 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import { WEDDING } from "@/lib/constants"
 
-const title = `${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName} — Wedding Invitation`
-const description = `You are cordially invited to celebrate the wedding of ${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName} on ${new Date(WEDDING.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })} at ${WEDDING.venue}, ${WEDDING.address}.`
+const title = `${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName} — Undangan Pernikahan`
+const description = `Anda diundang dengan hormat untuk merayakan pernikahan ${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName} pada ${new Date(WEDDING.date).toLocaleDateString("id-ID", { month: "long", day: "numeric", year: "numeric" })} di ${WEDDING.venue}, ${WEDDING.address}.`
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://wedding.muhammadramdan.com"),
   title,
   description,
   keywords: [
+    "undangan pernikahan",
     "wedding invitation",
     WEDDING.couple.bride.shortName,
     WEDDING.couple.groom.shortName,
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     description,
     url: "https://wedding.muhammadramdan.com",
     siteName: title,
-    locale: "en_US",
+    locale: "id_ID",
     type: "website",
   },
   twitter: {
@@ -56,7 +57,8 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="id"
+      suppressHydrationWarning
       className={cn(
         "antialiased",
         fontMono.variable,
