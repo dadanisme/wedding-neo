@@ -1,5 +1,6 @@
 "use client"
 
+import { Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { WEDDING } from "@/lib/constants"
 import { Alert, AlertTitle } from "@/components/ui/alert"
@@ -47,7 +48,7 @@ function BentoCard({
   )
 }
 
-export default function Page() {
+function PageContent() {
   const searchParams = useSearchParams()
   const guest = searchParams.get("to") ?? "Guest"
   const greetingText = WEDDING.greeting.replace("{guest}", guest)
@@ -166,5 +167,13 @@ export default function Page() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function Page() {
+  return (
+    <Suspense>
+      <PageContent />
+    </Suspense>
   )
 }
