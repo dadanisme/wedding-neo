@@ -153,6 +153,7 @@ function PageContent() {
           {/* Where to go in Garut */}
           <BentoCard
             className="col-span-2 bg-accent text-accent-foreground sm:col-start-3 sm:row-span-2 sm:row-start-1"
+            dialogClassName="sm:max-w-3xl max-h-[85vh] overflow-y-auto"
             dialogContent={<GarutDialogContent />}
           >
             <CardHeader>
