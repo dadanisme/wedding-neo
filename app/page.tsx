@@ -25,6 +25,7 @@ import {
   ArrowRight01Icon,
   Call02Icon,
   CarParking01Icon,
+  Calendar03Icon,
   Clock01Icon,
   Download04Icon,
   GiftIcon,
@@ -53,10 +54,17 @@ function BentoCard({
     <Dialog>
       <DialogTrigger
         nativeButton={false}
-        className={`cursor-pointer text-left transition-all hover:-translate-y-0.5 hover:shadow-lg ${className ?? ""}`}
+        className={`cursor-pointer text-left transition-all hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98] ${className ?? ""}`}
         render={<Card className="h-full border-2 border-border shadow-md" />}
       >
-        {children}
+        <div className="relative flex h-full flex-col">
+          {children}
+          <HugeiconsIcon
+            icon={ArrowRight01Icon}
+            size={18}
+            className="pointer-events-none absolute right-3 bottom-3 opacity-30"
+          />
+        </div>
       </DialogTrigger>
       <DialogContent>
         {rawDialogContent ?? (
@@ -131,7 +139,7 @@ export default function Page() {
         <Dialog>
           <DialogTrigger
             nativeButton={false}
-            className="cursor-pointer text-left transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            className="cursor-pointer text-left transition-all hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98]"
             render={
               <Alert className="border-2 border-border bg-secondary text-secondary-foreground shadow-md" />
             }
@@ -151,12 +159,60 @@ export default function Page() {
           </DialogContent>
         </Dialog>
 
-        <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-4 sm:grid-rows-2">
-          {/* Names Card - top left, spans 2 cols */}
+        <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-4 sm:grid-rows-[auto_auto]">
+          {/* The Couple & Our Story - merged, spans 2 cols */}
           <BentoCard
             className="col-span-2 bg-primary text-primary-foreground"
-            dialogTitle="The Couple"
-            dialogContent="More details about Sarah & Ramdan coming soon."
+            rawDialogContent={
+              <>
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold">
+                    {WEDDING.couple.bride} & {WEDDING.couple.groom}
+                  </DialogTitle>
+                  <DialogDescription>
+                    Two hearts, one journey.
+                  </DialogDescription>
+                </DialogHeader>
+
+                {/* Timeline */}
+                <div className="relative flex flex-col gap-6 pl-6">
+                  <div className="absolute top-1 bottom-1 left-[7px] w-0.5 bg-border" />
+
+                  <div className="relative">
+                    <div className="absolute top-1 -left-6 size-3.5 border-2 border-primary bg-background" />
+                    <p className="text-xs font-bold tracking-wider text-primary uppercase">
+                      First Met
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      What started as a chance encounter quickly became
+                      something neither of us expected.
+                    </p>
+                  </div>
+
+                  <div className="relative">
+                    <div className="absolute top-1 -left-6 size-3.5 border-2 border-primary bg-background" />
+                    <p className="text-xs font-bold tracking-wider text-primary uppercase">
+                      Falling in Love
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Through late-night conversations and shared dreams, we
+                      knew this was something real.
+                    </p>
+                  </div>
+
+                  <div className="relative">
+                    <div className="absolute top-1 -left-6 size-3.5 border-2 border-primary bg-primary" />
+                    <p className="text-xs font-bold tracking-wider text-primary uppercase">
+                      Forever Begins
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      And now we invite you to witness the next chapter of our
+                      story.
+                    </p>
+                  </div>
+                </div>
+              </>
+            }
           >
             <CardHeader>
               <CardTitle className="text-xs font-normal tracking-widest uppercase opacity-80">
@@ -169,32 +225,15 @@ export default function Page() {
                 <br />
                 &amp; {WEDDING.couple.groom}
               </h2>
-            </CardContent>
-          </BentoCard>
-
-          {/* Our Story Card - bottom left */}
-          <BentoCard
-            className="col-span-1 bg-secondary text-secondary-foreground"
-            dialogTitle="Our Story"
-            dialogContent="Our love story details coming soon."
-          >
-            <CardHeader>
-              <CardTitle className="text-xs font-normal tracking-widest uppercase opacity-80">
-                Our Story
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-lg font-bold sm:text-xl">
-                Two hearts,
-                <br />
-                one journey.
+              <p className="mt-2 text-sm opacity-70">
+                Two hearts, one journey.
               </p>
             </CardContent>
           </BentoCard>
 
           {/* Date & Venue Card - bottom middle (merged) */}
           <BentoCard
-            className="col-span-1 overflow-hidden bg-secondary text-secondary-foreground"
+            className="col-span-2 overflow-hidden bg-secondary text-secondary-foreground sm:col-span-2"
             rawDialogContent={
               <>
                 {/* Decorative header */}
@@ -408,29 +447,37 @@ export default function Page() {
               </>
             }
           >
-            <CardHeader>
-              <CardTitle className="text-xs font-normal tracking-widest uppercase opacity-80">
-                Save the Date
-              </CardTitle>
-            </CardHeader>
-
-            <CardContent>
-              <p className="text-2xl font-bold text-foreground sm:text-3xl">
-                {date.toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                })}
-              </p>
-              <p className="mt-1 text-sm font-medium">{WEDDING.time} WIB</p>
-              <div className="mt-3 inline-flex items-center gap-1.5 border-t-2 border-border pt-3">
-                <HugeiconsIcon
-                  icon={Location04Icon}
-                  size={14}
-                  className="text-primary"
-                />
-                <span className="text-xs font-medium text-foreground">
-                  {WEDDING.venue}
-                </span>
+            <CardContent className="flex items-center gap-4 p-4">
+              <HugeiconsIcon
+                icon={Calendar03Icon}
+                size={40}
+                className="shrink-0 text-primary"
+              />
+              <div className="flex flex-col gap-0.5">
+                <p className="text-xs font-bold tracking-wider uppercase opacity-60">
+                  Save the Date
+                </p>
+                <p className="text-base leading-tight font-bold text-foreground sm:text-lg">
+                  {formattedDate}
+                </p>
+                <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                  <span className="inline-flex items-center gap-1">
+                    <HugeiconsIcon
+                      icon={Clock01Icon}
+                      size={12}
+                      className="text-primary"
+                    />
+                    {WEDDING.time} WIB
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <HugeiconsIcon
+                      icon={Location04Icon}
+                      size={12}
+                      className="text-primary"
+                    />
+                    {WEDDING.venue}
+                  </span>
+                </div>
               </div>
             </CardContent>
           </BentoCard>

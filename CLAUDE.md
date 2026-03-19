@@ -36,7 +36,7 @@ Wedding invitation website for **Sarah & Ramdan**. Built with Next.js 16 (App Ro
 
 ## Workflow Rules
 
-- **ALWAYS clarify before acting** — When an instruction is ambiguous (e.g., "put X here", "fill this section"), use AskUserQuestion tool to ask exactly where, what, and how before writing any code. Never assume. Ask many questions. It's better to over-clarify than to make the wrong change.
+- **ALWAYS clarify before acting** — When an instruction is ambiguous (e.g., "put X here", "fill this section"), ALWAYS use `AskUserQuestion` tool to ask exactly where, what, and how before writing any code. Never assume. Ask many questions. It's better to over-clarify than to make the wrong change.
 
 ## Design Rules
 
