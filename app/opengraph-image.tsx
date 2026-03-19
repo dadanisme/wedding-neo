@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og"
 import { WEDDING } from "@/lib/constants"
 
-export const alt = `${WEDDING.couple.bride} & ${WEDDING.couple.groom} Wedding Invitation`
+export const alt = `${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName} Wedding Invitation`
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -92,8 +92,8 @@ export default function OGImage() {
                 lineHeight: 1.05,
               }}
             >
-              <span>{WEDDING.couple.bride}</span>
-              <span>& {WEDDING.couple.groom}</span>
+              <span>{WEDDING.couple.bride.shortName}</span>
+              <span>& {WEDDING.couple.groom.shortName}</span>
             </div>
             <div
               style={{

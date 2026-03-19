@@ -42,7 +42,7 @@ export function VenueDialogContent() {
     const end = `${WEDDING.date.replace(/-/g, "")}T${WEDDING.schedule.resepsi.replace(":", "")}00`
     const params = new URLSearchParams({
       action: "TEMPLATE",
-      text: `${WEDDING.couple.bride} & ${WEDDING.couple.groom}'s Wedding`,
+      text: `${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName}'s Wedding`,
       dates: `${start}/${end}`,
       details: `Akad: ${WEDDING.schedule.akad} WIB\nResepsi: ${WEDDING.schedule.resepsi} WIB`,
       location: `${WEDDING.venue}, ${WEDDING.address}`,
@@ -60,7 +60,7 @@ export function VenueDialogContent() {
       "BEGIN:VEVENT",
       `DTSTART:${start}`,
       `DTEND:${end}`,
-      `SUMMARY:${WEDDING.couple.bride} & ${WEDDING.couple.groom}'s Wedding`,
+      `SUMMARY:${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName}'s Wedding`,
       `LOCATION:${WEDDING.venue}, ${WEDDING.address}`,
       `DESCRIPTION:Akad: ${WEDDING.schedule.akad} WIB\\nResepsi: ${WEDDING.schedule.resepsi} WIB`,
       "END:VEVENT",

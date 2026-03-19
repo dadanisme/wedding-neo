@@ -1,9 +1,41 @@
 export const WEDDING = {
   greeting: "Dear {guest}, you are cordially invited!",
   couple: {
-    bride: "Sarah",
-    groom: "Ramdan",
+    bride: {
+      name: "Sarah Amelia Nur Wahidah",
+      shortName: "Sarah",
+      parents: "Mr. Ujang Rahmat & Mrs. Dedeh Setiasih",
+      quote:
+        "With a gentle heart and strong faith, she believes love grows in patience and blossoms in sincerity.",
+    },
+    groom: {
+      name: "Muhamad Ramdan",
+      shortName: "Ramdan",
+      parents: "Mr. Samsudin & Mrs. Maesaroh",
+      quote:
+        "With calm strength and steady devotion, he believes love is choosing the same person every single day.",
+    },
   },
+  gallery: [
+    "/gallery/1.jpg",
+    "/gallery/2.jpg",
+    "/gallery/3.jpg",
+    "/gallery/4.jpg",
+    "/gallery/5.jpg",
+    "/gallery/6.jpg",
+    "/gallery/7.jpg",
+    "/gallery/8.jpg",
+    "/gallery/9.jpg",
+    "/gallery/10.jpg",
+    "/gallery/11.jpg",
+    "/gallery/12.jpg",
+    "/gallery/13.jpg",
+    "/gallery/14.jpg",
+    "/gallery/15.jpg",
+    "/gallery/16.jpg",
+    "/gallery/17.jpg",
+    "/gallery/18.jpg",
+  ],
   date: "2026-05-02",
   time: "09:00",
   venue: "Lapang CLC",

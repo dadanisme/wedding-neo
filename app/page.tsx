@@ -20,10 +20,12 @@ import { GarutDialogContent } from "@/components/dialogs/garut-dialog-content"
 
 function BentoCard({
   className,
+  dialogClassName,
   children,
   dialogContent,
 }: {
   className?: string
+  dialogClassName?: string
   children: React.ReactNode
   dialogContent: React.ReactNode
 }) {
@@ -43,7 +45,7 @@ function BentoCard({
           />
         </div>
       </DialogTrigger>
-      <DialogContent>{dialogContent}</DialogContent>
+      <DialogContent className={dialogClassName}>{dialogContent}</DialogContent>
     </Dialog>
   )
 }
@@ -88,6 +90,7 @@ function PageContent() {
           {/* The Couple & Our Story */}
           <BentoCard
             className="col-span-2 bg-primary text-primary-foreground"
+            dialogClassName="sm:max-w-lg max-h-[85vh] overflow-y-auto"
             dialogContent={<CoupleStoryDialogContent />}
           >
             <CardHeader>
@@ -97,9 +100,9 @@ function PageContent() {
             </CardHeader>
             <CardContent>
               <h2 className="text-4xl font-bold sm:text-5xl">
-                {WEDDING.couple.bride}
+                {WEDDING.couple.bride.shortName}
                 <br />
-                &amp; {WEDDING.couple.groom}
+                &amp; {WEDDING.couple.groom.shortName}
               </h2>
               <p className="mt-2 text-sm opacity-70">
                 Two hearts, one journey.

@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import { WEDDING } from "@/lib/constants"
 
-const title = `${WEDDING.couple.bride} & ${WEDDING.couple.groom} — Wedding Invitation`
-const description = `You are cordially invited to celebrate the wedding of ${WEDDING.couple.bride} & ${WEDDING.couple.groom} on ${new Date(WEDDING.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })} at ${WEDDING.venue}, ${WEDDING.address}.`
+const title = `${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName} — Wedding Invitation`
+const description = `You are cordially invited to celebrate the wedding of ${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName} on ${new Date(WEDDING.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })} at ${WEDDING.venue}, ${WEDDING.address}.`
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://wedding.muhammadramdan.com"),
@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   description,
   keywords: [
     "wedding invitation",
-    WEDDING.couple.bride,
-    WEDDING.couple.groom,
+    WEDDING.couple.bride.shortName,
+    WEDDING.couple.groom.shortName,
     "Garut",
     WEDDING.venue,
   ],
