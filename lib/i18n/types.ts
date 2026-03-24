@@ -65,6 +65,11 @@ export type Dictionary = {
     }>
   }
 
+  music: {
+    playMusic: string
+    selectSong: string
+  }
+
   langToggle: {
     label: string
   }

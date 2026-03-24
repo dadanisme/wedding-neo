@@ -20,6 +20,7 @@ import { VenueDialogContent } from "@/components/dialogs/venue-dialog-content"
 import { GarutDialogContent } from "@/components/dialogs/garut-dialog-content"
 import { LanguageToggle } from "@/components/language-toggle"
 import { FallingIcons } from "@/components/falling-icons"
+import { MusicPlayer } from "@/components/music-player"
 
 function BentoCard({
   className,
@@ -113,6 +114,7 @@ export function Invitation({ guest }: { guest: string }) {
   return (
     <div className="relative flex min-h-svh items-center justify-center overflow-hidden p-4 sm:p-8">
       <FallingIcons />
+      <MusicPlayer />
       <div className="relative z-10 flex w-full max-w-4xl flex-col gap-4">
         {/* Greeting Alert */}
         <Dialog defaultOpen>

@@ -173,6 +173,11 @@ const id = {
     ],
   },
 
+  music: {
+    playMusic: "Putar musik",
+    selectSong: "Pilih lagu",
+  },
+
   langToggle: {
     label: "Bahasa Indonesia",
   },

@@ -174,6 +174,11 @@ const en = {
     ],
   },
 
+  music: {
+    playMusic: "Play music",
+    selectSong: "Choose a song",
+  },
+
   langToggle: {
     label: "English",
   },

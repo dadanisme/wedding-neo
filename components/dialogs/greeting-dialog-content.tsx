@@ -8,10 +8,26 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
+import { Checkbox } from "@/components/ui/checkbox"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { useTranslation } from "@/lib/i18n-context"
+import { useMusic, MUSIC_TRACKS } from "@/lib/music-context"
 
 export function GreetingDialogContent({ guest }: { guest: string }) {
   const { t } = useTranslation()
+  const { enabled, setEnabled, track, setTrack, play } = useMusic()
+
+  function handleCta() {
+    if (enabled) {
+      play()
+    }
+  }
 
   return (
     <>
@@ -97,6 +113,43 @@ export function GreetingDialogContent({ guest }: { guest: string }) {
         )}
       </div>
 
+      {/* Music controls */}
+      <div className="flex flex-col gap-3 border-2 border-border bg-secondary p-4">
+        <label className="flex cursor-pointer items-center gap-2.5">
+          <Checkbox
+            checked={enabled}
+            onCheckedChange={(checked) => setEnabled(checked as boolean)}
+          />
+          <span className="text-sm font-medium text-foreground">
+            {t.music.playMusic}
+          </span>
+        </label>
+        {enabled && (
+          <Select
+            value={track}
+            onValueChange={(v) => {
+              if (v) setTrack(v)
+            }}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue>
+                {(value) =>
+                  MUSIC_TRACKS.find((m) => m.id === value)?.label ??
+                  t.music.selectSong
+                }
+              </SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              {MUSIC_TRACKS.map((t) => (
+                <SelectItem key={t.id} value={t.id}>
+                  {t.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
+      </div>
+
       {/* CTA */}
       <DialogFooter>
         <DialogClose
@@ -104,6 +157,7 @@ export function GreetingDialogContent({ guest }: { guest: string }) {
             <Button
               size="lg"
               className="w-full border-2 border-border text-sm font-bold tracking-wider uppercase shadow-md"
+              onClick={handleCta}
             />
           }
         >
