@@ -2,10 +2,9 @@ import type { Metadata } from "next"
 import {
   Geist_Mono,
   Figtree,
-  Poppins,
   Architects_Daughter,
-  Libre_Baskerville,
-  IBM_Plex_Mono,
+  Inter,
+  JetBrains_Mono,
 } from "next/font/google"
 
 import "./globals.css"
@@ -58,28 +57,20 @@ const fontMono = Geist_Mono({
 })
 
 // Theme fonts — loaded upfront, activated via CSS variables per song
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-})
-
 const architectsDaughter = Architects_Daughter({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-architects-daughter",
 })
 
-const libreBaskerville = Libre_Baskerville({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-libre-baskerville",
+  variable: "--font-inter",
 })
 
-const ibmPlexMono = IBM_Plex_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-ibm-plex-mono",
+  variable: "--font-jetbrains-mono",
 })
 
 export default function RootLayout({
@@ -96,10 +87,9 @@ export default function RootLayout({
         fontMono.variable,
         "font-sans",
         figtree.variable,
-        poppins.variable,
         architectsDaughter.variable,
-        libreBaskerville.variable,
-        ibmPlexMono.variable
+        inter.variable,
+        jetbrainsMono.variable
       )}
     >
       <body>
