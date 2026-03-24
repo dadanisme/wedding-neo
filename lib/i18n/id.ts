@@ -74,65 +74,100 @@ const id = {
   garut: {
     title: "Jelajahi Garut",
     description:
-      "Jelajahi pemandian air panas, perkebunan teh, dan kuliner lokal Garut yang terkenal selama Anda di sini untuk merayakan bersama kami.",
+      "Cari penginapan dan jelajahi wisata sekitar selama Anda di sini untuk merayakan bersama kami.",
     categories: {
       all: "Semua",
-      nature: "Alam",
-      food: "Kuliner",
-      culture: "Budaya",
+      hotel: "Penginapan",
+      wisata: "Wisata",
     },
     directions: "Petunjuk Arah",
     footerQuote: "Garut \u2014 Swiss Van Java",
     places: [
       {
-        name: "Pemandian Air Panas Cipanas",
+        name: "Penginapan Legok Asri",
         description:
-          "Resor pemandian air panas alami dikelilingi pepohonan hijau. Sempurna untuk bersantai setelah perjalanan panjang.",
+          "Penginapan terdekat dari lokasi acara (~5km). Bersih, murah, favorit tamu kondangan.",
+      },
+      {
+        name: "SAREMA Villa & Mancing",
+        description:
+          "Villa + kolam + mancing di Cibatu (~4km barat lokasi acara). Cocok keluarga.",
+      },
+      {
+        name: "OLA Homestay",
+        description:
+          "Homestay homey di Leles dekat Candi Cangkuang. Ada dapur, berasa rumah sendiri.",
+      },
+      {
+        name: "Hotel Santika Premiere Garut",
+        description:
+          "Hotel premium area Cipanas (~30 menit dari lokasi acara). Warm pool, view Gunung Guntur.",
+      },
+      {
+        name: "Mercure Garut City Center",
+        description:
+          "Hotel terbaik di pusat kota Garut (~30 menit dari lokasi acara). Infinity pool air hangat, dekat mall.",
+      },
+      {
+        name: "Villa Edelweiss",
+        description:
+          "Villa overwater di atas kolam ikan, kolam renang air hangat alami, view gunung & sawah. Suasana tenang, harga terjangkau.",
+      },
+      {
+        name: "Kamasri View",
+        description:
+          "Spot view di Kersamanah sendiri. Adem, tenang, foto-friendly.",
+      },
+      {
+        name: "Pesona Lewo Water Park",
+        description:
+          "Water park dekat lokasi acara. Tiket 10\u201325rb, cocok buat anak-anak.",
+      },
+      {
+        name: "Gunung Ringgeung",
+        description:
+          "Camping ground + air terjun + hutan pinus. Area Kersamanah/Malangbong.",
+      },
+      {
+        name: "Silayung Park",
+        description: "View kota Cibatu dari atas. Bagus waktu sunset.",
+      },
+      {
+        name: "Air Terjun Kancil",
+        description: "Air terjun virgin di Cibatu, masih alami.",
+      },
+      {
+        name: "Situ Salawe",
+        description:
+          "Danau hidden gem di Malangbong. Ada flying fox & camping ground.",
+      },
+      {
+        name: "Puncak Indah Malangbong",
+        description: "Panorama dari atas, hiking ringan ~15 menit.",
+      },
+      {
+        name: "Sunset Pesona Jati Ciwangi",
+        description: "Hutan pinus cantik di Limbangan, ada hammock.",
       },
       {
         name: "Situ Bagendit",
         description:
-          "Danau indah yang kaya akan legenda lokal. Nikmati perahu dayung dan jajanan pinggir danau.",
+          "Danau legendaris Garut. Naik rakit, view Gunung Guntur. ~20 menit dari lokasi acara.",
       },
       {
-        name: "Kawah Darajat",
+        name: "Wisata Alam Batu Lempar",
         description:
-          "Kawah vulkanik dengan fumarola beruap dan kolam renang bertenaga panas bumi.",
+          "Hutan pinus + air terjun kecil di Karangpawitan. Family-friendly.",
       },
       {
-        name: "Kampung Sampireun",
+        name: "Nagara Hot Spring Experience",
         description:
-          "Resor ramah lingkungan pemenang penghargaan dengan vila terapung di danau pribadi dikelilingi perkebunan teh.",
+          "Pemandian air panas modern di Cipanas. VIP private cabin. Signature Garut!",
       },
       {
-        name: "Gunung Papandayan",
+        name: "Darajat Pass",
         description:
-          "Salah satu gunung berapi paling mudah dijangkau di Jawa. Pendakian sedang mengungkap kawah belerang dan ladang edelweis yang menakjubkan.",
-      },
-      {
-        name: "Dodol Picnic",
-        description:
-          "Oleh-oleh khas Garut paling ikonik \u2014 dodol kenyal dan manis dalam berbagai rasa. Wajib dibeli untuk oleh-oleh.",
-      },
-      {
-        name: "Sate Maranggi",
-        description:
-          "Sate daging sapi lezat yang dimarinasi kecap manis dan rempah, dibakar di atas arang. Spesialitas Jawa Barat.",
-      },
-      {
-        name: "Baso Aci",
-        description:
-          "Bakso tapioka kenyal dalam kuah pedas gurih. Jajanan kaki lima kegemaran warga Garut.",
-      },
-      {
-        name: "Candi Cangkuang",
-        description:
-          "Candi Hindu abad ke-8 di sebuah pulau kecil, dapat diakses dengan rakit bambu tradisional.",
-      },
-      {
-        name: "Kampung Dukuh",
-        description:
-          "Desa tradisional Sunda yang melestarikan adat istiadat dan arsitektur berusia berabad-abad.",
+          "Waterpark air panas di pegunungan. ATV, flying fox, bungalow. Worth the trip!",
       },
     ],
   },

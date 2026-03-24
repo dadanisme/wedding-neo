@@ -1,6 +1,7 @@
 "use client"
 
-import { Suspense } from "react"
+import { Suspense, useEffect, useState } from "react"
+import Image from "next/image"
 import { useSearchParams } from "next/navigation"
 import { WEDDING } from "@/lib/constants"
 import { useTranslation } from "@/lib/i18n-context"
@@ -22,11 +23,13 @@ import { LanguageToggle } from "@/components/language-toggle"
 
 function BentoCard({
   className,
+  cardClassName,
   dialogClassName,
   children,
   dialogContent,
 }: {
   className?: string
+  cardClassName?: string
   dialogClassName?: string
   children: React.ReactNode
   dialogContent: React.ReactNode
@@ -36,9 +39,13 @@ function BentoCard({
       <DialogTrigger
         nativeButton={false}
         className={`cursor-pointer text-left transition-all hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98] ${className ?? ""}`}
-        render={<Card className="h-full border-2 border-border shadow-md" />}
+        render={
+          <Card
+            className={`h-full border-2 border-border shadow-md ${cardClassName ?? ""}`}
+          />
+        }
       >
-        <div className="relative flex h-full flex-col">
+        <div className="relative flex h-full flex-col overflow-hidden">
           {children}
           <HugeiconsIcon
             icon={ArrowRight01Icon}
@@ -154,16 +161,18 @@ function PageContent() {
 
           {/* Where to go in Garut */}
           <BentoCard
-            className="col-span-2 bg-accent text-accent-foreground sm:col-start-3 sm:row-span-2 sm:row-start-1"
+            className="col-span-2 text-white sm:col-start-3 sm:row-span-2 sm:row-start-1"
+            cardClassName="gap-0 py-0"
             dialogClassName="sm:max-w-3xl max-h-[85vh] overflow-y-auto"
             dialogContent={<GarutDialogContent />}
           >
-            <CardHeader>
+            <GarutCardBackground />
+            <CardHeader className="relative z-10 pt-6">
               <CardTitle className="text-xs font-normal tracking-widest uppercase opacity-80">
                 {t.page.garutTitle}
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-1 items-end">
+            <CardContent className="relative z-10 flex flex-1 items-end pb-6">
               <p className="text-lg font-medium sm:text-xl">
                 {t.page.garutDescription}
               </p>
@@ -176,6 +185,44 @@ function PageContent() {
           <LanguageToggle />
         </div>
       </div>
+    </div>
+  )
+}
+
+const GARUT_SLIDES = [
+  "/garut/wisata/situ-bagendit_1.jpg",
+  "/garut/hotels/mercure-garut_1.jpg",
+  "/garut/wisata/darajat-pass_1.jpg",
+  "/garut/wisata/kamasri-view_1.jpg",
+  "/garut/wisata/nagara-hot-spring_1.jpg",
+]
+
+function GarutCardBackground() {
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % GARUT_SLIDES.length)
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="absolute inset-0">
+      {GARUT_SLIDES.map((src, i) => (
+        <Image
+          key={src}
+          src={src}
+          alt=""
+          fill
+          className={`object-cover transition-opacity duration-1000 ${
+            i === current ? "opacity-100" : "opacity-0"
+          }`}
+          sizes="(max-width: 640px) 100vw, 50vw"
+          priority={i === 0}
+        />
+      ))}
+      <div className="absolute inset-0 bg-black/50" />
     </div>
   )
 }

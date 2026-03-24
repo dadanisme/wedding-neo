@@ -54,9 +54,8 @@ export type Dictionary = {
     description: string
     categories: {
       all: string
-      nature: string
-      food: string
-      culture: string
+      hotel: string
+      wisata: string
     }
     directions: string
     footerQuote: string

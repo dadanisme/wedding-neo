@@ -74,65 +74,102 @@ const en = {
   garut: {
     title: "Where to Go in Garut",
     description:
-      "Explore Garut\u2019s famous hot springs, tea plantations, and local cuisine while you\u2019re here for the celebration.",
+      "Explore nearby stays and attractions while you\u2019re here for the celebration.",
     categories: {
       all: "All",
-      nature: "Nature",
-      food: "Food",
-      culture: "Culture",
+      hotel: "Stay",
+      wisata: "Explore",
     },
     directions: "Directions",
     footerQuote: "Garut \u2014 the Swiss Van Java",
     places: [
       {
-        name: "Cipanas Hot Springs",
+        name: "Penginapan Legok Asri",
         description:
-          "Natural hot springs resort surrounded by lush greenery. Perfect for relaxing after a long journey.",
+          "Closest lodging to the venue (~5km). Clean, affordable, a favorite among wedding guests.",
+      },
+      {
+        name: "SAREMA Villa & Mancing",
+        description:
+          "Villa + pool + fishing in Cibatu (~4km west of venue). Great for families.",
+      },
+      {
+        name: "OLA Homestay",
+        description:
+          "Cozy homestay in Leles near Candi Cangkuang. Has a kitchen, feels like home.",
+      },
+      {
+        name: "Hotel Santika Premiere Garut",
+        description:
+          "Premium hotel in Cipanas area (~30 min from venue). Warm pool, Mt. Guntur views.",
+      },
+      {
+        name: "Mercure Garut City Center",
+        description:
+          "Best hotel in downtown Garut (~30 min from venue). Infinity warm pool, near the mall.",
+      },
+      {
+        name: "Villa Edelweiss",
+        description:
+          "Overwater villa on a fish pond, natural warm pool, mountain & rice field views. Peaceful and affordable.",
+      },
+      {
+        name: "Kamasri View",
+        description:
+          "A scenic viewpoint right in Kersamanah. Cool breeze, peaceful, and Instagram-worthy.",
+      },
+      {
+        name: "Pesona Lewo Water Park",
+        description:
+          "Water park near the venue. Tickets 10\u201325k IDR, perfect for kids.",
+      },
+      {
+        name: "Gunung Ringgeung",
+        description:
+          "Camping ground + waterfall + pine forest in the Kersamanah/Malangbong area.",
+      },
+      {
+        name: "Silayung Park",
+        description: "Overlooking Cibatu town from above. Beautiful at sunset.",
+      },
+      {
+        name: "Air Terjun Kancil",
+        description:
+          "A pristine waterfall in Cibatu, still untouched and natural.",
+      },
+      {
+        name: "Situ Salawe",
+        description:
+          "A hidden gem lake in Malangbong. Has flying fox & camping ground.",
+      },
+      {
+        name: "Puncak Indah Malangbong",
+        description: "Panoramic views from the top, a light 15-minute hike.",
+      },
+      {
+        name: "Sunset Pesona Jati Ciwangi",
+        description:
+          "Beautiful pine forest in Limbangan with hammocks for lounging.",
       },
       {
         name: "Situ Bagendit",
         description:
-          "A scenic lake steeped in local legend. Enjoy paddle boats and lakeside snacks.",
+          "Garut\u2019s legendary lake. Raft rides and Mt. Guntur views. ~20 min from venue.",
       },
       {
-        name: "Kawah Darajat",
+        name: "Wisata Alam Batu Lempar",
         description:
-          "Volcanic crater with steaming fumaroles and a geothermal-heated swimming pool.",
+          "Pine forest + small waterfall in Karangpawitan. Family-friendly.",
       },
       {
-        name: "Kampung Sampireun",
+        name: "Nagara Hot Spring Experience",
         description:
-          "An award-winning eco-resort with floating villas on a private lake surrounded by tea plantations.",
+          "Modern hot spring in Cipanas. VIP private cabins. A Garut signature!",
       },
       {
-        name: "Papandayan Volcano",
+        name: "Darajat Pass",
         description:
-          "One of Java\u2019s most accessible volcanoes. A moderate hike reveals stunning sulfur craters and edelweiss fields.",
-      },
-      {
-        name: "Dodol Picnic",
-        description:
-          "The most iconic Garut souvenir \u2014 chewy, sweet dodol in countless flavors. A must-buy for the trip home.",
-      },
-      {
-        name: "Sate Maranggi",
-        description:
-          "Succulent beef satay marinated in sweet soy and spices, grilled over charcoal. A West Java specialty.",
-      },
-      {
-        name: "Baso Aci",
-        description:
-          "Chewy tapioca meatballs in a spicy, savory broth. Garut\u2019s beloved street food comfort dish.",
-      },
-      {
-        name: "Candi Cangkuang",
-        description:
-          "An 8th-century Hindu temple on a small island, accessible by traditional bamboo raft.",
-      },
-      {
-        name: "Kampung Dukuh",
-        description:
-          "A traditional Sundanese village preserving centuries-old customs and architecture.",
+          "Hot spring waterpark in the mountains. ATV, flying fox, bungalows. Worth the trip!",
       },
     ],
   },
