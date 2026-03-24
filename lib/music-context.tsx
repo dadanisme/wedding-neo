@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react"
+import { applyTheme } from "./themes"
 
 export type MusicTrack = "alicia" | "last-dive" | "mikrokosmos" | "canon"
 
@@ -35,6 +36,11 @@ const MusicContext = createContext<MusicContextValue | null>(null)
 const STORAGE_KEY_TRACK = "wedding-music-track"
 const STORAGE_KEY_ENABLED = "wedding-music-enabled"
 
+function getNextTrack(current: MusicTrack): MusicTrack {
+  const idx = MUSIC_TRACKS.findIndex((t) => t.id === current)
+  return MUSIC_TRACKS[(idx + 1) % MUSIC_TRACKS.length].id
+}
+
 export function MusicProvider({ children }: { children: React.ReactNode }) {
   const [enabled, setEnabledState] = useState(true)
   const [track, setTrackState] = useState<MusicTrack>("alicia")
@@ -59,6 +65,11 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
+  // Apply theme whenever track changes
+  useEffect(() => {
+    applyTheme(track)
+  }, [track])
+
   const setEnabled = useCallback((v: boolean) => {
     setEnabledState(v)
     localStorage.setItem(STORAGE_KEY_ENABLED, String(v))
@@ -73,13 +84,28 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!audioRef.current) {
       audioRef.current = new Audio()
-      audioRef.current.loop = true
       audioRef.current.volume = 0.4
     }
-    audioRef.current.src = `/music/${track}.mp3`
+    const audio = audioRef.current
+
+    // Auto-advance to next song when current one ends
+    const handleEnded = () => {
+      const next = getNextTrack(track)
+      setTrack(next)
+      audio.src = `/music/${next}.mp3`
+      audio.play().catch(() => {})
+    }
+
+    audio.addEventListener("ended", handleEnded)
+    audio.src = `/music/${track}.mp3`
+
     // If it was playing, restart with new track
     if (playing) {
-      audioRef.current.play().catch(() => {})
+      audio.play().catch(() => {})
+    }
+
+    return () => {
+      audio.removeEventListener("ended", handleEnded)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [track])
@@ -87,7 +113,6 @@ export function MusicProvider({ children }: { children: React.ReactNode }) {
   const play = useCallback(() => {
     if (!audioRef.current) {
       audioRef.current = new Audio(`/music/${track}.mp3`)
-      audioRef.current.loop = true
       audioRef.current.volume = 0.4
     }
     audioRef.current.play().catch(() => {})

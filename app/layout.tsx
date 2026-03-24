@@ -1,5 +1,12 @@
 import type { Metadata } from "next"
-import { Geist_Mono, Figtree } from "next/font/google"
+import {
+  Geist_Mono,
+  Figtree,
+  Poppins,
+  Architects_Daughter,
+  Libre_Baskerville,
+  IBM_Plex_Mono,
+} from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -50,6 +57,31 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 })
 
+// Theme fonts — loaded upfront, activated via CSS variables per song
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+})
+
+const architectsDaughter = Architects_Daughter({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-architects-daughter",
+})
+
+const libreBaskerville = Libre_Baskerville({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-libre-baskerville",
+})
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-ibm-plex-mono",
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -63,7 +95,11 @@ export default function RootLayout({
         "antialiased",
         fontMono.variable,
         "font-sans",
-        figtree.variable
+        figtree.variable,
+        poppins.variable,
+        architectsDaughter.variable,
+        libreBaskerville.variable,
+        ibmPlexMono.variable
       )}
     >
       <body>
