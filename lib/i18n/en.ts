@@ -4,54 +4,54 @@ import type { Dictionary } from "./types"
 // garut.places[] must stay in sync with GARUT_PLACES in constants.ts (same order)
 const en = {
   greeting: {
-    salutation: "Dear {guest}, you are cordially invited!",
-    headerLabel: "A Gentle Invitation",
-    dialogTitle: "Dear {guest}",
+    salutation: "Hey {guest}, you're invited!",
+    headerLabel: "You're Invited",
+    dialogTitle: "Hey {guest}",
     quranicVerse:
       "And of His signs is that He created for you from yourselves mates that you may find tranquillity in them.",
     quranicRef: "QS. Ar-Rum: 21",
     narrativeLines: [
-      "Some journeys begin quietly.",
-      "Ours started with a simple meeting,",
-      "a conversation,",
-      "and a sense of comfort we never expected.",
+      "Some things start without a plan.",
+      "Ours began with a simple hello,",
+      "a few conversations,",
+      "and a comfort we didn't see coming.",
       "",
-      "Over time, comfort became trust.",
-      "Trust became love.",
-      "And love brought us here \u2014",
-      "ready to promise forever.",
+      "That comfort turned into trust.",
+      "Trust turned into love.",
+      "And love brought us here —",
+      "ready to make it forever.",
     ],
     closingLines: [
-      "With grateful hearts and the blessings of our families,",
-      "we are honored to invite you",
-      "to witness the beginning of our new chapter.",
+      "With full hearts and our families' blessings,",
+      "we'd love for you to be there",
+      "as we start this new chapter together.",
       "",
-      "Your presence would truly mean so much to us.",
+      "It really would mean the world to us.",
     ],
-    cta: "Take Me In",
+    cta: "Let's Go",
   },
 
   couple: {
-    title: "The Happy Couple",
+    title: "Meet the Couple",
     subtitle: "Two hearts, one journey.",
     theGroom: "The Groom",
     theBride: "The Bride",
     sonOf: "Son of",
     daughterOf: "Daughter of",
     groomQuote:
-      "With calm strength and steady devotion, he believes love is choosing the same person every single day.",
+      "Quiet strength, steady heart. He believes love is showing up for the same person, every single day.",
     brideQuote:
-      "With a gentle heart and strong faith, she believes love grows in patience and blossoms in sincerity.",
+      "Gentle soul, strong faith. She believes love grows in patience and blooms in sincerity.",
     ourGallery: "Our Gallery",
   },
 
   page: {
-    gettingMarried: "We\u2019re getting married",
+    gettingMarried: "We're getting married",
     twoHearts: "Two hearts, one journey.",
     saveTheDate: "Save the Date",
-    garutTitle: "Where to Go in Garut",
+    garutTitle: "While You're in Garut",
     garutDescription:
-      "Explore hot springs, tea plantations, and local cuisine while you\u2019re here.",
+      "Hot springs, tea fields, good food — there's plenty to see while you're here.",
   },
 
   venue: {
@@ -61,7 +61,7 @@ const en = {
     parking: "Parking",
     contact: "Contact",
     gift: "Gift",
-    giftMessage: "Your presence is our greatest gift",
+    giftMessage: "Honestly, just having you there is enough",
     getDirections: "Get Directions",
     addCalendar: "+ Calendar",
     googleCalendar: "Google Calendar",
@@ -72,89 +72,89 @@ const en = {
   },
 
   garut: {
-    title: "Where to Go in Garut",
+    title: "While You're in Garut",
     description:
-      "Explore nearby stays and attractions while you\u2019re here for the celebration.",
+      "Check out some nearby stays and cool spots while you're here for the big day.",
     categories: {
       all: "All",
       hotel: "Stay",
       wisata: "Explore",
     },
     directions: "Directions",
-    footerQuote: "Garut \u2014 the Swiss Van Java",
+    footerQuote: "Garut — the Swiss Van Java",
     places: [
       {
         name: "Penginapan Legok Asri",
         description:
-          "Closest lodging to the venue (~5km). Clean, affordable, a favorite among wedding guests.",
+          "Closest stay to the venue (~5km). Clean, budget-friendly, and a guest favorite.",
       },
       {
         name: "SAREMA Villa & Mancing",
         description:
-          "Villa + pool + fishing in Cibatu (~4km west of venue). Great for families.",
+          "Villa + pool + fishing in Cibatu (~4km west). Great if you're bringing the fam.",
       },
       {
         name: "OLA Homestay",
         description:
-          "Cozy homestay in Leles near Candi Cangkuang. Has a kitchen, feels like home.",
+          "Cozy spot in Leles near Candi Cangkuang. Has a kitchen — feels like home.",
       },
       {
         name: "Hotel Santika Premiere Garut",
         description:
-          "Premium hotel in Cipanas area (~30 min from venue). Warm pool, Mt. Guntur views.",
+          "Nice hotel in the Cipanas area (~30 min out). Warm pool, Mt. Guntur views.",
       },
       {
         name: "Mercure Garut City Center",
         description:
-          "Best hotel in downtown Garut (~30 min from venue). Infinity warm pool, near the mall.",
+          "Best hotel downtown (~30 min out). Infinity warm pool, right near the mall.",
       },
       {
         name: "Villa Edelweiss",
         description:
-          "Overwater villa on a fish pond, natural warm pool, mountain & rice field views. Peaceful and affordable.",
+          "Overwater villa on a fish pond, warm pool, mountain & rice field views. Peaceful and easy on the wallet.",
       },
       {
         name: "Kamasri View",
         description:
-          "A scenic viewpoint right in Kersamanah. Cool breeze, peaceful, and Instagram-worthy.",
+          "Scenic viewpoint right in Kersamanah. Cool breeze, chill vibes, great for photos.",
       },
       {
         name: "Pesona Lewo Water Park",
         description:
-          "Water park near the venue. Tickets 10\u201325k IDR, perfect for kids.",
+          "Water park near the venue. 10–25k IDR — the kids will love it.",
       },
       {
         name: "Gunung Ringgeung",
         description:
-          "Camping ground + waterfall + pine forest in the Kersamanah/Malangbong area.",
+          "Camping + waterfall + pine forest in the Kersamanah/Malangbong area.",
       },
       {
         name: "Silayung Park",
-        description: "Overlooking Cibatu town from above. Beautiful at sunset.",
+        description: "Overlooks Cibatu from above. Beautiful at sunset.",
       },
       {
         name: "Air Terjun Kancil",
         description:
-          "A pristine waterfall in Cibatu, still untouched and natural.",
+          "A pristine waterfall in Cibatu — still untouched and worth the visit.",
       },
       {
         name: "Situ Salawe",
         description:
-          "A hidden gem lake in Malangbong. Has flying fox & camping ground.",
+          "Hidden gem lake in Malangbong. Has flying fox & camping spots.",
       },
       {
         name: "Puncak Indah Malangbong",
-        description: "Panoramic views from the top, a light 15-minute hike.",
+        description: "Panoramic views from the top — just a quick 15-min hike.",
       },
       {
         name: "Sunset Pesona Jati Ciwangi",
         description:
-          "Beautiful pine forest in Limbangan with hammocks for lounging.",
+          "Pine forest in Limbangan with hammocks. Perfect for doing nothing.",
       },
       {
         name: "Situ Bagendit",
         description:
-          "Garut\u2019s legendary lake. Raft rides and Mt. Guntur views. ~20 min from venue.",
+          "Garut's legendary lake. Raft rides + Mt. Guntur views. ~20 min from venue.",
       },
       {
         name: "Wisata Alam Batu Lempar",
@@ -164,12 +164,12 @@ const en = {
       {
         name: "Nagara Hot Spring Experience",
         description:
-          "Modern hot spring in Cipanas. VIP private cabins. A Garut signature!",
+          "Modern hot spring in Cipanas with private VIP cabins. A Garut must-do.",
       },
       {
         name: "Darajat Pass",
         description:
-          "Hot spring waterpark in the mountains. ATV, flying fox, bungalows. Worth the trip!",
+          "Hot spring waterpark up in the mountains. ATV, flying fox, bungalows — worth the trip.",
       },
     ],
   },

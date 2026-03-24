@@ -4,54 +4,54 @@ import type { Dictionary } from "./types"
 // garut.places[] must stay in sync with GARUT_PLACES in constants.ts (same order)
 const id = {
   greeting: {
-    salutation: "{guest} yang terhormat, Anda diundang dengan hormat!",
-    headerLabel: "Sebuah Undangan",
-    dialogTitle: "Kepada {guest}",
+    salutation: "Hai {guest}, kamu diundang!",
+    headerLabel: "Kamu Diundang",
+    dialogTitle: "Hai {guest}",
     quranicVerse:
       "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya.",
     quranicRef: "QS. Ar-Rum: 21",
     narrativeLines: [
-      "Beberapa perjalanan dimulai dengan tenang.",
-      "Perjalanan kami berawal dari pertemuan sederhana,",
-      "sebuah percakapan,",
-      "dan rasa nyaman yang tak pernah kami duga.",
+      "Ada hal yang datang tanpa rencana.",
+      "Cerita kami dimulai dari sapaan sederhana,",
+      "beberapa obrolan,",
+      "dan rasa nyaman yang nggak kami sangka.",
       "",
-      "Seiring waktu, kenyamanan menjadi kepercayaan.",
-      "Kepercayaan menjadi cinta.",
-      "Dan cinta membawa kami ke sini \u2014",
-      "siap untuk berjanji selamanya.",
+      "Nyaman itu pelan-pelan jadi percaya.",
+      "Percaya jadi cinta.",
+      "Dan cinta bawa kami ke sini —",
+      "siap berjanji untuk selamanya.",
     ],
     closingLines: [
-      "Dengan hati yang penuh syukur dan restu keluarga,",
-      "kami merasa terhormat mengundang Anda",
-      "untuk menyaksikan awal dari babak baru kami.",
+      "Dengan hati penuh syukur dan restu keluarga,",
+      "kami pengen kamu ada di sana",
+      "waktu kami memulai babak baru ini.",
       "",
-      "Kehadiran Anda akan sangat berarti bagi kami.",
+      "Serius, kehadiranmu berarti banget buat kami.",
     ],
-    cta: "Buka Undangan",
+    cta: "Yuk Masuk",
   },
 
   couple: {
-    title: "Calon Pengantin",
+    title: "Yang Mau Nikah",
     subtitle: "Dua hati, satu perjalanan.",
     theGroom: "Mempelai Pria",
     theBride: "Mempelai Wanita",
     sonOf: "Putra dari",
     daughterOf: "Putri dari",
     groomQuote:
-      "Dengan kekuatan yang tenang dan kesetiaan yang teguh, ia percaya cinta adalah memilih orang yang sama setiap hari.",
+      "Tenang tapi setia. Baginya, cinta itu soal memilih orang yang sama setiap hari.",
     brideQuote:
-      "Dengan hati yang lembut dan iman yang kuat, ia percaya cinta tumbuh dalam kesabaran dan mekar dalam ketulusan.",
+      "Lembut hatinya, kuat imannya. Baginya, cinta tumbuh dalam kesabaran dan mekar dalam ketulusan.",
     ourGallery: "Galeri Kami",
   },
 
   page: {
-    gettingMarried: "Kami akan menikah",
+    gettingMarried: "Kami mau nikah",
     twoHearts: "Dua hati, satu perjalanan.",
-    saveTheDate: "Simpan Tanggalnya",
-    garutTitle: "Jelajahi Garut",
+    saveTheDate: "Catat Tanggalnya",
+    garutTitle: "Sekalian Jalan-Jalan di Garut",
     garutDescription:
-      "Jelajahi pemandian air panas, perkebunan teh, dan kuliner lokal selama Anda di sini.",
+      "Air panas, kebun teh, kuliner lokal — banyak yang bisa dijelajahi selagi di sini.",
   },
 
   venue: {
@@ -61,7 +61,7 @@ const id = {
     parking: "Parkir",
     contact: "Kontak",
     gift: "Hadiah",
-    giftMessage: "Kehadiran Anda adalah hadiah terbesar kami",
+    giftMessage: "Jujur, kehadiranmu aja udah lebih dari cukup",
     getDirections: "Petunjuk Arah",
     addCalendar: "+ Kalender",
     googleCalendar: "Google Calendar",
@@ -72,69 +72,69 @@ const id = {
   },
 
   garut: {
-    title: "Jelajahi Garut",
+    title: "Sekalian Jalan-Jalan di Garut",
     description:
-      "Cari penginapan dan jelajahi wisata sekitar selama Anda di sini untuk merayakan bersama kami.",
+      "Cek penginapan dan tempat seru di sekitar lokasi acara. Lumayan kan sekalian liburan.",
     categories: {
       all: "Semua",
       hotel: "Penginapan",
       wisata: "Wisata",
     },
     directions: "Petunjuk Arah",
-    footerQuote: "Garut \u2014 Swiss Van Java",
+    footerQuote: "Garut — Swiss Van Java",
     places: [
       {
         name: "Penginapan Legok Asri",
         description:
-          "Penginapan terdekat dari lokasi acara (~5km). Bersih, murah, favorit tamu kondangan.",
+          "Paling deket dari lokasi acara (~5km). Bersih, murah, langganan tamu kondangan.",
       },
       {
         name: "SAREMA Villa & Mancing",
         description:
-          "Villa + kolam + mancing di Cibatu (~4km barat lokasi acara). Cocok keluarga.",
+          "Villa + kolam + mancing di Cibatu (~4km barat). Enak buat yang bawa keluarga.",
       },
       {
         name: "OLA Homestay",
         description:
-          "Homestay homey di Leles dekat Candi Cangkuang. Ada dapur, berasa rumah sendiri.",
+          "Homestay cozy di Leles deket Candi Cangkuang. Ada dapur, kerasa kayak rumah sendiri.",
       },
       {
         name: "Hotel Santika Premiere Garut",
         description:
-          "Hotel premium area Cipanas (~30 menit dari lokasi acara). Warm pool, view Gunung Guntur.",
+          "Hotel bagus di area Cipanas (~30 menit). Kolam air hangat, view Gunung Guntur.",
       },
       {
         name: "Mercure Garut City Center",
         description:
-          "Hotel terbaik di pusat kota Garut (~30 menit dari lokasi acara). Infinity pool air hangat, dekat mall.",
+          "Hotel paling oke di pusat kota (~30 menit). Infinity pool air hangat, deket mall.",
       },
       {
         name: "Villa Edelweiss",
         description:
-          "Villa overwater di atas kolam ikan, kolam renang air hangat alami, view gunung & sawah. Suasana tenang, harga terjangkau.",
+          "Villa di atas kolam ikan, kolam air hangat alami, view gunung & sawah. Adem dan ramah di kantong.",
       },
       {
         name: "Kamasri View",
         description:
-          "Spot view di Kersamanah sendiri. Adem, tenang, foto-friendly.",
+          "Spot view di Kersamanah sendiri. Adem, santai, bagus buat foto.",
       },
       {
         name: "Pesona Lewo Water Park",
         description:
-          "Water park dekat lokasi acara. Tiket 10\u201325rb, cocok buat anak-anak.",
+          "Waterpark deket lokasi acara. Tiket 10–25rb — anak-anak pasti suka.",
       },
       {
         name: "Gunung Ringgeung",
         description:
-          "Camping ground + air terjun + hutan pinus. Area Kersamanah/Malangbong.",
+          "Camping + air terjun + hutan pinus. Area Kersamanah/Malangbong.",
       },
       {
         name: "Silayung Park",
-        description: "View kota Cibatu dari atas. Bagus waktu sunset.",
+        description: "View kota Cibatu dari atas. Cakep pas sunset.",
       },
       {
         name: "Air Terjun Kancil",
-        description: "Air terjun virgin di Cibatu, masih alami.",
+        description: "Air terjun di Cibatu yang masih perawan — alami banget.",
       },
       {
         name: "Situ Salawe",
@@ -143,31 +143,32 @@ const id = {
       },
       {
         name: "Puncak Indah Malangbong",
-        description: "Panorama dari atas, hiking ringan ~15 menit.",
+        description: "Panorama dari atas, hiking santai ~15 menit doang.",
       },
       {
         name: "Sunset Pesona Jati Ciwangi",
-        description: "Hutan pinus cantik di Limbangan, ada hammock.",
+        description:
+          "Hutan pinus di Limbangan, ada hammock. Cocok buat rebahan.",
       },
       {
         name: "Situ Bagendit",
         description:
-          "Danau legendaris Garut. Naik rakit, view Gunung Guntur. ~20 menit dari lokasi acara.",
+          "Danau legendaris Garut. Naik rakit, view Gunung Guntur. ~20 menit dari lokasi.",
       },
       {
         name: "Wisata Alam Batu Lempar",
         description:
-          "Hutan pinus + air terjun kecil di Karangpawitan. Family-friendly.",
+          "Hutan pinus + air terjun kecil di Karangpawitan. Aman buat anak-anak.",
       },
       {
         name: "Nagara Hot Spring Experience",
         description:
-          "Pemandian air panas modern di Cipanas. VIP private cabin. Signature Garut!",
+          "Pemandian air panas modern di Cipanas. Ada VIP private cabin. Wajib coba!",
       },
       {
         name: "Darajat Pass",
         description:
-          "Waterpark air panas di pegunungan. ATV, flying fox, bungalow. Worth the trip!",
+          "Waterpark air panas di pegunungan. ATV, flying fox, bungalow — worth it!",
       },
     ],
   },
