@@ -42,7 +42,7 @@ export const WEDDING = {
     upacaraAdat: "09:00",
     resepsi: "11:00",
   },
-  food: "Sundanese Oriental",
+  food: "Sundanese Oriental (Halal)",
   contacts: [{ name: "Sarah", phone: "081573690927" }],
   gift: {
     bank: "BNI",
