@@ -220,7 +220,7 @@ export function Invitation({ guest }: { guest: string }) {
         </div>
 
         {/* Language Toggle */}
-        <div className="flex justify-center">
+        <div className="flex justify-center pb-20">
           <LanguageToggle />
         </div>
       </div>
