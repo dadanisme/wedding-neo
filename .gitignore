@@ -31,6 +31,9 @@ pnpm-debug.log*
 # env files
 .env*.local
 
+# firebase service account
+*-firebase-adminsdk-*.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
