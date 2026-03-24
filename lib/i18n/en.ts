@@ -66,8 +66,8 @@ const en = {
     addCalendar: "+ Calendar",
     googleCalendar: "Google Calendar",
     downloadIcs: "Download .ics",
-    akad: "Akad",
-    resepsi: "Resepsi",
+    akad: "Holy Matrimony",
+    resepsi: "Reception",
     parkingInfo: "50+ spots available",
   },
 
