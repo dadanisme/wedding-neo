@@ -67,6 +67,7 @@ const en = {
     googleCalendar: "Google Calendar",
     downloadIcs: "Download .ics",
     akad: "Holy Matrimony",
+    upacaraAdat: "Traditional Ceremony",
     resepsi: "Reception",
     parkingInfo: "50+ spots available",
   },

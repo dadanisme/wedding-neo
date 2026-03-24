@@ -45,6 +45,7 @@ export type Dictionary = {
     googleCalendar: string
     downloadIcs: string
     akad: string
+    upacaraAdat: string
     resepsi: string
     parkingInfo: string
   }

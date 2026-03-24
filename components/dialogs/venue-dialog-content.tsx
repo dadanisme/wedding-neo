@@ -48,7 +48,7 @@ export function VenueDialogContent() {
       action: "TEMPLATE",
       text: `${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName}'s Wedding`,
       dates: `${start}/${end}`,
-      details: `${t.venue.akad}: ${WEDDING.schedule.akad} WIB\n${t.venue.resepsi}: ${WEDDING.schedule.resepsi} WIB`,
+      details: `${t.venue.akad}: ${WEDDING.schedule.akad} WIB\n${t.venue.upacaraAdat}: ${WEDDING.schedule.upacaraAdat} WIB\n${t.venue.resepsi}: ${WEDDING.schedule.resepsi} WIB`,
       location: `${WEDDING.venue}, ${WEDDING.address}`,
     })
     return `https://calendar.google.com/calendar/render?${params.toString()}`
@@ -66,7 +66,7 @@ export function VenueDialogContent() {
       `DTEND:${end}`,
       `SUMMARY:${WEDDING.couple.bride.shortName} & ${WEDDING.couple.groom.shortName}'s Wedding`,
       `LOCATION:${WEDDING.venue}, ${WEDDING.address}`,
-      `DESCRIPTION:${t.venue.akad}: ${WEDDING.schedule.akad} WIB\\n${t.venue.resepsi}: ${WEDDING.schedule.resepsi} WIB`,
+      `DESCRIPTION:${t.venue.akad}: ${WEDDING.schedule.akad} WIB\\n${t.venue.upacaraAdat}: ${WEDDING.schedule.upacaraAdat} WIB\\n${t.venue.resepsi}: ${WEDDING.schedule.resepsi} WIB`,
       "END:VEVENT",
       "END:VCALENDAR",
     ].join("\r\n")
@@ -179,10 +179,17 @@ export function VenueDialogContent() {
               {t.venue.schedule}
             </span>
           </div>
-          <span className="text-xs text-muted-foreground">
-            {t.venue.akad} {WEDDING.schedule.akad} &middot; {t.venue.resepsi}{" "}
-            {WEDDING.schedule.resepsi}
-          </span>
+          <div className="flex flex-col items-end gap-0.5 text-xs text-muted-foreground">
+            <span>
+              {t.venue.akad} {WEDDING.schedule.akad}
+            </span>
+            <span>
+              {t.venue.upacaraAdat} {WEDDING.schedule.upacaraAdat}
+            </span>
+            <span>
+              {t.venue.resepsi} {WEDDING.schedule.resepsi}
+            </span>
+          </div>
         </div>
         <div className="flex items-center justify-between gap-3 py-3">
           <div className="flex items-center gap-2.5">

@@ -67,6 +67,7 @@ const id = {
     googleCalendar: "Google Calendar",
     downloadIcs: "Unduh .ics",
     akad: "Akad",
+    upacaraAdat: "Upacara Adat",
     resepsi: "Resepsi",
     parkingInfo: "50+ tempat tersedia",
   },

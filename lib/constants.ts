@@ -39,7 +39,8 @@ export const WEDDING = {
   dressCode: "Earth Tones",
   schedule: {
     akad: "08:00",
-    resepsi: "10:00",
+    upacaraAdat: "09:00",
+    resepsi: "11:00",
   },
   food: "Sundanese Oriental",
   contacts: [{ name: "Sarah", phone: "081573690927" }],
