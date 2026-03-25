@@ -121,7 +121,7 @@ export function WishesSection({
           {t.wishes.empty}
         </div>
       ) : (
-        <div className="flex max-h-80 flex-col gap-3 overflow-y-auto pr-1">
+        <div className="flex max-h-80 flex-col gap-3 overflow-y-auto pr-1 pb-1">
           {wishes.map((wish) => (
             <div
               key={wish.id}
