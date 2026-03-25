@@ -180,6 +180,21 @@ const en = {
     selectSong: "Choose a song",
   },
 
+  wishes: {
+    sectionTitle: "Wishes & Prayers",
+    inputLabel: "Send your wishes, {guest}",
+    placeholder: "Write your heartfelt wishes for the couple...",
+    send: "Send Wish",
+    update: "Update Wish",
+    empty: "Be the first to send your wishes!",
+    timeAgo: {
+      justNow: "just now",
+      minutesAgo: "{n} min ago",
+      hoursAgo: "{n} hours ago",
+      daysAgo: "{n} days ago",
+    },
+  },
+
   langToggle: {
     label: "English",
   },

@@ -179,6 +179,21 @@ const id = {
     selectSong: "Pilih lagu",
   },
 
+  wishes: {
+    sectionTitle: "Ucapan & Doa",
+    inputLabel: "Kirim ucapanmu, {guest}",
+    placeholder: "Tulis ucapan terbaik untuk kedua mempelai...",
+    send: "Kirim Ucapan",
+    update: "Perbarui Ucapan",
+    empty: "Jadilah yang pertama mengirim ucapan!",
+    timeAgo: {
+      justNow: "baru saja",
+      minutesAgo: "{n} menit lalu",
+      hoursAgo: "{n} jam lalu",
+      daysAgo: "{n} hari lalu",
+    },
+  },
+
   langToggle: {
     label: "Bahasa Indonesia",
   },

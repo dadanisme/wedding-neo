@@ -71,6 +71,21 @@ export type Dictionary = {
     selectSong: string
   }
 
+  wishes: {
+    sectionTitle: string
+    inputLabel: string
+    placeholder: string
+    send: string
+    update: string
+    empty: string
+    timeAgo: {
+      justNow: string
+      minutesAgo: string
+      hoursAgo: string
+      daysAgo: string
+    }
+  }
+
   langToggle: {
     label: string
   }
