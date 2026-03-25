@@ -2,43 +2,35 @@
 
 import Image from "next/image"
 import { useTranslation } from "@/lib/i18n-context"
-import { Switch } from "@/components/ui/switch"
+import { Button } from "@/components/ui/button"
 
 export function LanguageToggle() {
   const { locale, setLocale } = useTranslation()
 
   return (
-    <label className="inline-flex cursor-pointer items-center gap-2.5">
-      <span className="inline-flex items-center gap-1">
-        <Image
-          src="https://flagcdn.com/id.svg"
-          alt="Indonesian"
-          width={20}
-          height={14}
-          unoptimized
-          className="h-3.5 w-5 border border-border object-cover"
-        />
-        <span className="text-xs font-bold tracking-wider text-muted-foreground uppercase">
-          ID
-        </span>
-      </span>
-      <Switch
-        checked={locale === "en"}
-        onCheckedChange={(checked) => setLocale(checked ? "en" : "id")}
+    <Button
+      size="sm"
+      variant="outline"
+      className="h-10 gap-1.5 border-2 border-border px-3 text-[11px] font-bold tracking-[1px] shadow-md"
+      onClick={() => setLocale(locale === "id" ? "en" : "id")}
+    >
+      <Image
+        src="https://flagcdn.com/id.svg"
+        alt="Indonesian"
+        width={16}
+        height={12}
+        unoptimized
+        className="h-3 w-4 border border-border object-cover"
       />
-      <span className="inline-flex items-center gap-1">
-        <span className="text-xs font-bold tracking-wider text-muted-foreground uppercase">
-          EN
-        </span>
-        <Image
-          src="https://flagcdn.com/gb.svg"
-          alt="English"
-          width={20}
-          height={14}
-          unoptimized
-          className="h-3.5 w-5 border border-border object-cover"
-        />
-      </span>
-    </label>
+      <span>ID / EN</span>
+      <Image
+        src="https://flagcdn.com/gb.svg"
+        alt="English"
+        width={16}
+        height={12}
+        unoptimized
+        className="h-3 w-4 border border-border object-cover"
+      />
+    </Button>
   )
 }
