@@ -69,7 +69,7 @@ export function FloatingControls() {
             <Button
               size="icon"
               variant="outline"
-              className="size-10 border-2 border-border shadow-md"
+              className="size-10 border-2 border-border bg-background shadow-md"
               onClick={() => setExpanded(!expanded)}
             >
               <HugeiconsIcon
@@ -80,7 +80,7 @@ export function FloatingControls() {
             <Button
               size="icon"
               variant={playing ? "default" : "outline"}
-              className="size-10 border-2 border-border shadow-md"
+              className={`size-10 border-2 border-border shadow-md ${playing ? "" : "bg-background"}`}
               onClick={toggle}
             >
               <HugeiconsIcon
