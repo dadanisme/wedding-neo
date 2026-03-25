@@ -185,6 +185,7 @@ const id = {
     placeholder: "Tulis ucapan terbaik untuk kedua mempelai...",
     send: "Kirim Ucapan",
     update: "Perbarui Ucapan",
+    cancel: "Batal",
     empty: "Jadilah yang pertama mengirim ucapan!",
     timeAgo: {
       justNow: "baru saja",

@@ -5,6 +5,8 @@ import { useWishes } from "@/hooks/use-wishes"
 import { useTranslation } from "@/lib/i18n-context"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { PencilEdit01Icon } from "@hugeicons/core-free-icons"
 
 function formatTimeAgo(
   date: Date | null,
@@ -39,18 +41,20 @@ export function WishesSection({
   const { wishes, loading, existingWish, sending, sendWish } =
     useWishes(guestSlug)
   const [draft, setDraft] = useState<string | null>(null)
+  const [editing, setEditing] = useState(false)
 
   // If user hasn't edited, show existing wish; otherwise show draft
   const message = draft ?? existingWish?.message ?? ""
+  const hasSubmitted = !!existingWish
+  const showInput = !hasSubmitted || editing
+  const inputLabel = t.wishes.inputLabel.replace("{guest}", guest)
 
   const handleSubmit = async () => {
     if (!message.trim()) return
     await sendWish(message.trim())
     setDraft(null)
+    setEditing(false)
   }
-
-  const isUpdate = !!existingWish
-  const inputLabel = t.wishes.inputLabel.replace("{guest}", guest)
 
   return (
     <div className="flex flex-col gap-4">
@@ -63,33 +67,49 @@ export function WishesSection({
         <div className="h-px flex-1 bg-border opacity-20" />
       </div>
 
-      {/* Input area */}
-      <div className="flex flex-col gap-3 border-2 border-border bg-secondary p-4 shadow-md">
-        <p className="text-[11px] font-bold tracking-[1.5px] text-muted-foreground uppercase">
-          {inputLabel}
-        </p>
-        <Textarea
-          value={message}
-          onChange={(e) => {
-            setDraft(e.target.value)
-          }}
-          placeholder={t.wishes.placeholder}
-          maxLength={500}
-          className="min-h-[72px] resize-none border-2 border-border bg-background"
-        />
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-muted-foreground">
-            {message.length}/500
-          </span>
-          <Button
-            onClick={handleSubmit}
-            disabled={!message.trim() || sending}
-            className="border-2 border-border text-[13px] font-bold tracking-[1px] uppercase shadow-md"
-          >
-            {sending ? "..." : isUpdate ? t.wishes.update : t.wishes.send}
-          </Button>
+      {/* Input area — hidden after first submit */}
+      {showInput && (
+        <div className="flex flex-col gap-3 border-2 border-border bg-secondary p-4 shadow-md">
+          <p className="text-[11px] font-bold tracking-[1.5px] text-muted-foreground uppercase">
+            {inputLabel}
+          </p>
+          <Textarea
+            value={message}
+            onChange={(e) => {
+              setDraft(e.target.value)
+            }}
+            placeholder={t.wishes.placeholder}
+            maxLength={500}
+            className="min-h-[72px] resize-none border-2 border-border bg-background"
+          />
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-muted-foreground">
+              {message.length}/500
+            </span>
+            <div className="flex gap-2">
+              {editing && (
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setEditing(false)
+                    setDraft(null)
+                  }}
+                  className="border-2 border-border text-[13px] font-bold tracking-[1px] uppercase shadow-md"
+                >
+                  {t.wishes.cancel}
+                </Button>
+              )}
+              <Button
+                onClick={handleSubmit}
+                disabled={!message.trim() || sending}
+                className="border-2 border-border text-[13px] font-bold tracking-[1px] uppercase shadow-md"
+              >
+                {sending ? "..." : editing ? t.wishes.update : t.wishes.send}
+              </Button>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Wish feed */}
       {loading ? (
@@ -109,9 +129,22 @@ export function WishesSection({
             >
               <div className="flex items-center justify-between">
                 <span className="text-[13px] font-bold">{wish.guestName}</span>
-                <span className="font-mono text-[11px] text-muted-foreground">
-                  {formatTimeAgo(wish.createdAt, t.wishes.timeAgo)}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-[11px] text-muted-foreground">
+                    {formatTimeAgo(wish.createdAt, t.wishes.timeAgo)}
+                  </span>
+                  {wish.guestSlug === guestSlug && !editing && (
+                    <button
+                      onClick={() => {
+                        setDraft(wish.message)
+                        setEditing(true)
+                      }}
+                      className="cursor-pointer text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <HugeiconsIcon icon={PencilEdit01Icon} size={14} />
+                    </button>
+                  )}
+                </div>
               </div>
               <p className="text-sm leading-relaxed">{wish.message}</p>
             </div>

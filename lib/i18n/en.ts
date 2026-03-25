@@ -186,6 +186,7 @@ const en = {
     placeholder: "Write your heartfelt wishes for the couple...",
     send: "Send Wish",
     update: "Update Wish",
+    cancel: "Cancel",
     empty: "Be the first to send your wishes!",
     timeAgo: {
       justNow: "just now",

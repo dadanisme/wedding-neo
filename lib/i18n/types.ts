@@ -77,6 +77,7 @@ export type Dictionary = {
     placeholder: string
     send: string
     update: string
+    cancel: string
     empty: string
     timeAgo: {
       justNow: string
