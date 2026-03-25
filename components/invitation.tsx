@@ -18,9 +18,9 @@ import { GreetingDialogContent } from "@/components/dialogs/greeting-dialog-cont
 import { CoupleStoryDialogContent } from "@/components/dialogs/couple-story-dialog-content"
 import { VenueDialogContent } from "@/components/dialogs/venue-dialog-content"
 import { GarutDialogContent } from "@/components/dialogs/garut-dialog-content"
-import { LanguageToggle } from "@/components/language-toggle"
 import { FallingIcons } from "@/components/falling-icons"
-import { MusicPlayer } from "@/components/music-player"
+import { FloatingControls } from "@/components/floating-controls"
+import { WishesSection } from "@/components/wishes-section"
 
 function BentoCard({
   className,
@@ -98,7 +98,13 @@ function GarutCardBackground() {
   )
 }
 
-export function Invitation({ guest }: { guest: string }) {
+export function Invitation({
+  guest,
+  guestSlug,
+}: {
+  guest: string
+  guestSlug: string
+}) {
   const { t, dateLocale } = useTranslation()
   const greetingText = t.greeting.salutation.replace("{guest}", guest)
 
@@ -114,7 +120,7 @@ export function Invitation({ guest }: { guest: string }) {
   return (
     <div className="relative flex min-h-svh items-center justify-center overflow-hidden p-4 sm:p-8">
       <FallingIcons />
-      <MusicPlayer />
+      <FloatingControls />
       <div className="relative z-10 flex w-full max-w-4xl flex-col gap-4">
         {/* Greeting Alert */}
         <Dialog defaultOpen>
@@ -219,10 +225,11 @@ export function Invitation({ guest }: { guest: string }) {
           </BentoCard>
         </div>
 
-        {/* Language Toggle */}
-        <div className="flex justify-center pb-20">
-          <LanguageToggle />
-        </div>
+        {/* Wishes Section */}
+        <WishesSection guest={guest} guestSlug={guestSlug} />
+
+        {/* Bottom spacer for floating controls */}
+        <div className="pb-20" />
       </div>
     </div>
   )

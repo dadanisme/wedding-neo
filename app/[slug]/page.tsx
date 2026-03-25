@@ -40,5 +40,5 @@ export default async function InvitationPage({ params }: Props) {
 
   if (!guest) notFound()
 
-  return <Invitation guest={guest.name} />
+  return <Invitation guest={guest.name} guestSlug={guest.slug} />
 }
