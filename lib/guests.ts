@@ -5,6 +5,7 @@ export type Guest = {
   id: string
   name: string
   slug: string
+  sent?: boolean
 }
 
 const COLLECTION = "guests"
@@ -54,6 +55,13 @@ export async function addGuest(
 
 export async function deleteGuest(id: string): Promise<void> {
   await adminDb.collection(COLLECTION).doc(id).delete()
+}
+
+export async function updateGuestSent(
+  id: string,
+  sent: boolean
+): Promise<void> {
+  await adminDb.collection(COLLECTION).doc(id).update({ sent })
 }
 
 export async function getAllGuests(): Promise<Guest[]> {

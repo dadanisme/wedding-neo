@@ -7,11 +7,13 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore"
 import { auth, db } from "@/lib/firebase"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
 
 type Guest = {
   id: string
   name: string
   slug: string
+  sent?: boolean
 }
 
 const BASE_URL = "https://wedding.muhammadramdan.com"
@@ -25,6 +27,8 @@ export default function DashboardPage() {
   const [adding, setAdding] = useState(false)
   const [addError, setAddError] = useState("")
   const [copied, setCopied] = useState<string | null>(null)
+  const [filter, setFilter] = useState<"all" | "sent" | "unsent">("all")
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     let unsubSnapshot: (() => void) | undefined
@@ -81,10 +85,37 @@ export default function DashboardPage() {
     })
   }
 
-  function copyLink(slug: string) {
-    navigator.clipboard.writeText(`${BASE_URL}/${slug}`)
-    setCopied(slug)
+  function copyLink(guest: Guest) {
+    navigator.clipboard.writeText(`${BASE_URL}/${guest.slug}`)
+    setCopied(guest.slug)
     setTimeout(() => setCopied(null), 2000)
+    if (!guest.sent) {
+      toggleSent(guest.id, true)
+    }
+  }
+
+  async function toggleSent(id: string, sent: boolean) {
+    await fetch("/api/guests", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, sent }),
+    })
+  }
+
+  function highlightMatch(name: string) {
+    if (!search.trim()) return name
+    const idx = name.toLowerCase().indexOf(search.toLowerCase())
+    if (idx === -1) return name
+    const before = name.slice(0, idx)
+    const match = name.slice(idx, idx + search.length)
+    const after = name.slice(idx + search.length)
+    return (
+      <>
+        {before}
+        <mark className="rounded-sm bg-primary/30 text-inherit">{match}</mark>
+        {after}
+      </>
+    )
   }
 
   if (loading) {
@@ -134,7 +165,38 @@ export default function DashboardPage() {
       {/* Guest list */}
       <Card className="border-2 border-border shadow-md">
         <CardHeader>
-          <CardTitle className="text-base">Guests ({guests.length})</CardTitle>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <CardTitle className="text-base">
+              Guests ({guests.length}) &middot;{" "}
+              <span className="font-normal text-muted-foreground">
+                {guests.filter((g) => g.sent).length} sent
+              </span>
+            </CardTitle>
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search..."
+                className="h-9 w-40 rounded-md border-2 border-border bg-background px-3 text-sm outline-none focus:border-primary"
+              />
+              <div className="flex h-9 rounded-md border-2 border-border">
+                {(["all", "sent", "unsent"] as const).map((f) => (
+                  <button
+                    key={f}
+                    onClick={() => setFilter(f)}
+                    className={`px-3 text-sm font-medium capitalize transition-colors ${
+                      filter === f
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-background text-muted-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
         </CardHeader>
         <CardContent>
           {guests.length === 0 ? (
@@ -143,35 +205,57 @@ export default function DashboardPage() {
             </p>
           ) : (
             <div className="flex flex-col gap-2">
-              {guests.map((guest) => (
-                <div
-                  key={guest.id}
-                  className="flex items-center justify-between gap-2 rounded-md border-2 border-border p-3"
-                >
-                  <div className="min-w-0 flex-1">
-                    <p className="font-medium">{guest.name}</p>
-                    <p className="truncate text-xs text-muted-foreground">
-                      {BASE_URL}/{guest.slug}
-                    </p>
+              {[...guests]
+                .filter((g) => {
+                  if (filter === "sent") return g.sent
+                  if (filter === "unsent") return !g.sent
+                  return true
+                })
+                .filter((g) =>
+                  g.name.toLowerCase().includes(search.toLowerCase())
+                )
+                .sort((a, b) => Number(!!a.sent) - Number(!!b.sent))
+                .map((guest) => (
+                  <div
+                    key={guest.id}
+                    className="flex items-center gap-3 rounded-md border-2 border-border p-3"
+                  >
+                    <Checkbox
+                      checked={!!guest.sent}
+                      onClick={() => toggleSent(guest.id, !guest.sent)}
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p
+                        className={
+                          guest.sent
+                            ? "font-medium text-muted-foreground line-through"
+                            : "font-medium"
+                        }
+                      >
+                        {highlightMatch(guest.name)}
+                      </p>
+                      <p className="truncate text-xs text-muted-foreground">
+                        {BASE_URL}/{guest.slug}
+                      </p>
+                    </div>
+                    <div className="flex shrink-0 gap-1">
+                      <Button
+                        variant="secondary"
+                        size="xs"
+                        onClick={() => copyLink(guest)}
+                      >
+                        {copied === guest.slug ? "Copied!" : "Copy"}
+                      </Button>
+                      <Button
+                        variant="destructive"
+                        size="xs"
+                        onClick={() => handleDelete(guest.id)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
                   </div>
-                  <div className="flex shrink-0 gap-1">
-                    <Button
-                      variant="secondary"
-                      size="xs"
-                      onClick={() => copyLink(guest.slug)}
-                    >
-                      {copied === guest.slug ? "Copied!" : "Copy"}
-                    </Button>
-                    <Button
-                      variant="destructive"
-                      size="xs"
-                      onClick={() => handleDelete(guest.id)}
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
           )}
         </CardContent>

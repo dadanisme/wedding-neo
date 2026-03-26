@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getAllGuests, addGuest, deleteGuest } from "@/lib/guests"
+import {
+  getAllGuests,
+  addGuest,
+  deleteGuest,
+  updateGuestSent,
+} from "@/lib/guests"
 
 export async function GET() {
   const guests = await getAllGuests()
@@ -16,6 +21,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: result.error }, { status: 409 })
   }
   return NextResponse.json(result.guest)
+}
+
+export async function PATCH(request: NextRequest) {
+  const { id, sent } = await request.json()
+  if (!id || typeof id !== "string" || typeof sent !== "boolean") {
+    return NextResponse.json(
+      { error: "ID and sent status are required" },
+      { status: 400 }
+    )
+  }
+  await updateGuestSent(id, sent)
+  return NextResponse.json({ success: true })
 }
 
 export async function DELETE(request: NextRequest) {
