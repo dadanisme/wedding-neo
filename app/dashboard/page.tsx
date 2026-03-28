@@ -74,6 +74,7 @@ export default function DashboardPage() {
       return
     }
     setNewName("")
+    setSearch("")
     setAdding(false)
   }
 
@@ -137,31 +138,6 @@ export default function DashboardPage() {
         </Button>
       </div>
 
-      {/* Add guest form */}
-      <Card className="mb-6 border-2 border-border shadow-md">
-        <CardHeader>
-          <CardTitle className="text-base">Add Guest</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleAdd} className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <input
-                type="text"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                placeholder="Guest name"
-                className="h-9 flex-1 rounded-md border-2 border-border bg-background px-3 text-sm outline-none focus:border-primary"
-                required
-              />
-              <Button type="submit" disabled={adding}>
-                {adding ? "Adding..." : "Add"}
-              </Button>
-            </div>
-            {addError && <p className="text-sm text-destructive">{addError}</p>}
-          </form>
-        </CardContent>
-      </Card>
-
       {/* Guest list */}
       <Card className="border-2 border-border shadow-md">
         <CardHeader>
@@ -172,31 +148,42 @@ export default function DashboardPage() {
                 {guests.filter((g) => g.sent).length} sent
               </span>
             </CardTitle>
-            <div className="flex items-center gap-2">
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search..."
-                className="h-9 w-40 rounded-md border-2 border-border bg-background px-3 text-sm outline-none focus:border-primary"
-              />
-              <div className="flex h-9 rounded-md border-2 border-border">
-                {(["all", "sent", "unsent"] as const).map((f) => (
-                  <button
-                    key={f}
-                    onClick={() => setFilter(f)}
-                    className={`px-3 text-sm font-medium capitalize transition-colors ${
-                      filter === f
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-background text-muted-foreground hover:bg-muted"
-                    }`}
-                  >
-                    {f}
-                  </button>
-                ))}
-              </div>
+            <div className="flex h-9 rounded-md border-2 border-border">
+              {(["all", "sent", "unsent"] as const).map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setFilter(f)}
+                  className={`px-3 text-sm font-medium capitalize transition-colors ${
+                    filter === f
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-background text-muted-foreground hover:bg-muted"
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
             </div>
           </div>
+          <form onSubmit={handleAdd} className="flex items-center gap-2">
+            <input
+              type="text"
+              value={newName}
+              onChange={(e) => {
+                setNewName(e.target.value)
+                setSearch(e.target.value)
+              }}
+              placeholder="Search or add guest..."
+              className="h-9 flex-1 rounded-md border-2 border-border bg-background px-3 text-sm outline-none focus:border-primary"
+            />
+            <Button
+              type="submit"
+              size="sm"
+              disabled={adding || !newName.trim()}
+            >
+              {adding ? "Adding..." : "Add"}
+            </Button>
+          </form>
+          {addError && <p className="text-sm text-destructive">{addError}</p>}
         </CardHeader>
         <CardContent>
           {guests.length === 0 ? (
