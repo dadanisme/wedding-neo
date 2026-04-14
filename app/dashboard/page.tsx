@@ -18,6 +18,14 @@ type Guest = {
 
 const BASE_URL = "https://wedding.muhammadramdan.com"
 
+async function authHeaders(): Promise<HeadersInit> {
+  const token = await auth.currentUser?.getIdToken()
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  }
+}
+
 export default function DashboardPage() {
   const router = useRouter()
   const [authenticated, setAuthenticated] = useState(false)
@@ -64,7 +72,7 @@ export default function DashboardPage() {
     setAddError("")
     const res = await fetch("/api/guests", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: await authHeaders(),
       body: JSON.stringify({ name: newName.trim() }),
     })
     if (!res.ok) {
@@ -81,7 +89,7 @@ export default function DashboardPage() {
   async function handleDelete(id: string) {
     await fetch("/api/guests", {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
+      headers: await authHeaders(),
       body: JSON.stringify({ id }),
     })
   }
@@ -98,7 +106,7 @@ export default function DashboardPage() {
   async function toggleSent(id: string, sent: boolean) {
     await fetch("/api/guests", {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
+      headers: await authHeaders(),
       body: JSON.stringify({ id, sent }),
     })
   }
